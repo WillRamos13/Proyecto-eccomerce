@@ -2,6 +2,8 @@ package com.fastmarket.api.service;
 
 import com.fastmarket.api.model.CodigoVerificacionCorreo;
 import com.fastmarket.api.repository.CodigoVerificacionCorreoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,7 @@ import java.time.LocalDateTime;
 
 @Service
 public class CodigoVerificacionService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CodigoVerificacionService.class);
     private static final String TIPO_REGISTRO = "REGISTRO";
     private static final String TIPO_RECUPERACION = "RECUPERACION_PASSWORD";
 
@@ -46,7 +49,13 @@ public class CodigoVerificacionService {
         entidad.setIntentos(0);
 
         codigoRepository.save(entidad);
-        correoService.enviarCodigoRegistro(correo, nombre, codigo, minutosValidez);
+        boolean enviado = correoService.enviarCodigoRegistro(correo, nombre, codigo, minutosValidez);
+        if (!enviado && correoService.disponible()) {
+            LOGGER.error("Fallo el envio de codigo de registro a {}", correo);
+            throw new RuntimeException("No se pudo enviar el correo de verificacion. Revisa la configuracion de OAuth.");
+        } else if (!enviado) {
+            LOGGER.info("[DEV] Codigo de registro para {}: {}", correo, codigo);
+        }
     }
 
     @Transactional
@@ -63,7 +72,13 @@ public class CodigoVerificacionService {
         entidad.setIntentos(0);
 
         codigoRepository.save(entidad);
-        correoService.enviarCodigoRecuperacion(correo, codigo, minutosValidez);
+        boolean enviado = correoService.enviarCodigoRecuperacion(correo, codigo, minutosValidez);
+        if (!enviado && correoService.disponible()) {
+            LOGGER.error("Fallo el envio de codigo de recuperacion a {}", correo);
+            throw new RuntimeException("No se pudo enviar el correo de recuperacion. Revisa la configuracion de OAuth.");
+        } else if (!enviado) {
+            LOGGER.info("[DEV] Codigo de recuperacion para {}: {}", correo, codigo);
+        }
     }
 
     @Transactional

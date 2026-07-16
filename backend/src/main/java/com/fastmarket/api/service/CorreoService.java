@@ -4,6 +4,8 @@ import com.fastmarket.api.model.EstadoPedido;
 import com.fastmarket.api.model.Pedido;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import java.util.Map;
 
 @Service
 public class CorreoService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CorreoService.class);
 
     private static final String GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
     private static final String GMAIL_SEND_URL = "https://gmail.googleapis.com/gmail/v1/users/me/messages/send";
@@ -55,7 +59,7 @@ public class CorreoService {
 
     public boolean enviarCodigoRegistro(String correo, String nombre, String codigo, int minutosValidez) {
         if (!disponible()) {
-            System.out.println("[FastMarket DEV] Código de verificación para " + correo + ": " + codigo);
+            LOGGER.info("[FastMarket DEV] Código de verificación para {}: {}", correo, codigo);
             return false;
         }
 
@@ -100,7 +104,7 @@ public class CorreoService {
 
     public boolean enviarCodigoRecuperacion(String correo, String codigo, int minutosValidez) {
         if (!disponible()) {
-            System.out.println("[FastMarket DEV] Código de recuperación para " + correo + ": " + codigo);
+            LOGGER.info("[FastMarket DEV] Código de recuperación para {}: {}", correo, codigo);
             return false;
         }
 
@@ -188,8 +192,8 @@ public class CorreoService {
 
             return true;
         } catch (Exception e) {
-            System.out.println("[FastMarket MAIL] No se pudo enviar correo a " + destino + ": " + e.getMessage());
-            System.out.println(mensajeDev);
+            LOGGER.error("[FastMarket MAIL] No se pudo enviar correo a {}: {}", destino, e.getMessage(), e);
+            LOGGER.warn(mensajeDev);
             return false;
         }
     }
