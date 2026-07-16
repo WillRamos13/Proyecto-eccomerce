@@ -1,0 +1,24 @@
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+backend/target/
+**/target/
+*.class
+
+# IDE y sistema
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs y temporales
+*.log
+*.tmp
+*.swp
+
+# Entregables generados
+*.zip

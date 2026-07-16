@@ -1,0 +1,56 @@
+services:
+  - type: web
+    name: fastmarket
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    maxShutdownDelaySeconds: 60
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fastmarket-db
+          property: connectionString
+      - key: APP_AUTH_SECRET
+        generateValue: true
+      - key: ADMIN_NOMBRE
+        value: Administrador
+      - key: ADMIN_CORREO
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_RESET_PASSWORD
+        value: "false"
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+      - key: SPRING_JPA_SHOW_SQL
+        value: "false"
+      - key: DB_MAX_POOL_SIZE
+        value: "5"
+      - key: MERCADOPAGO_ACCESS_TOKEN
+        sync: false
+      - key: MERCADOPAGO_WEBHOOK_SECRET
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REFRESH_TOKEN
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+
+
+databases:
+  - name: fastmarket-db
+    plan: basic-256mb
+    postgresMajorVersion: "17"
+    databaseName: fastmarket
+    user: fastmarket_app
+    ipAllowList: []

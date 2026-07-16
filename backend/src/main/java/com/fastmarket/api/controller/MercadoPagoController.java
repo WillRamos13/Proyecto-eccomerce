@@ -5,6 +5,7 @@ import com.fastmarket.api.dto.PedidoDtos;
 import com.fastmarket.api.pattern.structural.facade.ComercioElectronicoFacade;
 import com.fastmarket.api.service.AuthTokenService;
 import com.fastmarket.api.service.MercadoPagoService;
+import com.fastmarket.api.service.MercadoPagoWebhookSecurityService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +18,18 @@ public class MercadoPagoController {
     private final ComercioElectronicoFacade comercioElectronicoFacade;
     private final MercadoPagoService mercadoPagoService;
     private final AuthTokenService authTokenService;
+    private final MercadoPagoWebhookSecurityService webhookSecurityService;
 
     public MercadoPagoController(
             ComercioElectronicoFacade comercioElectronicoFacade,
             MercadoPagoService mercadoPagoService,
-            AuthTokenService authTokenService
+            AuthTokenService authTokenService,
+            MercadoPagoWebhookSecurityService webhookSecurityService
     ) {
         this.comercioElectronicoFacade = comercioElectronicoFacade;
         this.mercadoPagoService = mercadoPagoService;
         this.authTokenService = authTokenService;
+        this.webhookSecurityService = webhookSecurityService;
     }
 
     @PostMapping("/pedidos/{pedidoId}/preferencia")
@@ -81,6 +85,8 @@ public class MercadoPagoController {
      */
     @PostMapping("/webhook")
     public ResponseEntity<Map<String, Object>> webhook(
+            @RequestHeader(value = "x-signature", required = false) String xSignature,
+            @RequestHeader(value = "x-request-id", required = false) String xRequestId,
             @RequestParam Map<String, String> params,
             @RequestBody(required = false) Map<String, Object> body
     ) {
@@ -97,6 +103,7 @@ public class MercadoPagoController {
         }
         if (paymentId == null || paymentId.isBlank()) throw new IllegalArgumentException("Notificación sin identificador de pago");
 
+        webhookSecurityService.validar(xSignature, xRequestId, paymentId);
         PedidoDtos.PedidoResponse pedido = mercadoPagoService.procesarWebhook(paymentId);
         return ResponseEntity.ok(Map.of("procesado", true, "pedidoId", pedido.id(), "estadoPago", pedido.estadoPago().name()));
     }

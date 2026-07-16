@@ -27,6 +27,8 @@ public class StartupSecurityCheck implements ApplicationRunner {
     private String corsOrigins;
     @Value("${mercadopago.access-token:}")
     private String mercadoPagoToken;
+    @Value("${mercadopago.webhook-secret:}")
+    private String mercadoPagoWebhookSecret;
     @Value("${app.frontend.base-url:}")
     private String frontendBaseUrl;
     @Value("${app.backend.public-url:}")
@@ -59,6 +61,9 @@ public class StartupSecurityCheck implements ApplicationRunner {
         if (produccion && mercadoPagoToken != null && !mercadoPagoToken.isBlank()) {
             if (!esHttps(frontendBaseUrl) || !esHttps(backendPublicUrl)) {
                 throw new IllegalStateException("FRONTEND_BASE_URL y BACKEND_PUBLIC_URL deben usar HTTPS cuando Mercado Pago está activo en producción");
+            }
+            if (esInseguro(mercadoPagoWebhookSecret, 16, "change_me", "cambiar", "reemplazar")) {
+                throw new IllegalStateException("MERCADOPAGO_WEBHOOK_SECRET es obligatorio cuando Mercado Pago está activo en producción");
             }
         }
     }
