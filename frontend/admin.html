@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador | FastMarket</title>
+    <link rel="stylesheet" href="estilos-globales.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="producto-caracteristicas.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="cabeza-admin">
+
+            <a href="admin.html" id="logo-admin">
+                <img src="img/logo.png" alt="Logo FastMarket">
+            </a>
+
+            <h2 id="bienvenida-admin">
+                <span id="nombre-admin">Administrador</span>
+            </h2>
+
+            <div id="menu-admin">
+                <button id="btn-menu-admin">Menú de gestión ▾</button>
+
+                <div id="opciones-admin">
+                    <button class="opcion-admin" data-panel="panel-inicio">Resumen ejecutivo</button>
+                    <button class="opcion-admin" data-panel="panel-productos">Productos</button>
+                    <button class="opcion-admin" data-panel="panel-banners">Banners</button>
+                    <button class="opcion-admin" data-panel="panel-index">Editar página de inicio</button>
+                    <button class="opcion-admin" data-panel="panel-ventas">Pedidos y ventas</button>
+                    <button class="opcion-admin" data-panel="panel-cupones">Marketing y cupones</button>
+                    <button class="opcion-admin solo-admin" data-panel="panel-vendedores">Equipo de vendedores</button>
+                    <button class="opcion-admin solo-admin" data-panel="panel-usuarios">Usuarios y permisos</button>
+                    <button class="opcion-admin" data-panel="panel-indices">Analítica</button>
+                    <button class="opcion-admin" data-panel="panel-powerbi">Reportes y estadísticas</button>
+                    <a href="login.html" id="cerrar-sesion">Salir</a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main id="admin-main">
+
+        <section id="panel-inicio" class="panel-admin activo">
+            <div class="panel-bienvenida panel-inicio-simple">
+                <div>
+                    <p class="subtitulo">Panel interno</p>
+                    <h1>Gestión de tienda FastMarket</h1>
+                    <p>Bienvenido. Usa el menú superior para entrar a cada área de trabajo.</p>
+                </div>
+                <div class="panel-badge-admin">
+                    <span>FM</span>
+                    <strong>Administración</strong>
+                    <small>Control general de la tienda</small>
+                </div>
+            </div>
+
+            <div id="perfil-admin-card" class="perfil-panel-card">
+                <div class="perfil-avatar-panel" id="perfil-admin-inicial">A</div>
+                <div class="perfil-panel-info">
+                    <span>Cuenta activa</span>
+                    <h2 id="perfil-admin-nombre">Administrador</h2>
+                    <p id="perfil-admin-correo">correo@fastmarket.com</p>
+                </div>
+                <div class="perfil-panel-datos">
+                    <p><strong>Rol:</strong> <span id="perfil-admin-rol">ADMIN</span></p>
+                    <p><strong>Teléfono:</strong> <span id="perfil-admin-telefono">No registrado</span></p>
+                    <p><strong>Documento:</strong> <span id="perfil-admin-documento">No registrado</span></p>
+                </div>
+            </div>
+
+            <div class="resumen-inicio-admin">
+                <article>
+                    <span>Revisión rápida</span>
+                    <strong>Catálogo, pedidos y usuarios</strong>
+                    <p>Consulta primero los indicadores y luego entra al módulo que necesites actualizar.</p>
+                </article>
+                <article>
+                    <span>Orden de trabajo</span>
+                    <strong>Inicio ordenado</strong>
+                    <p>El inicio queda limpio; las herramientas completas se mantienen dentro del menú.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="panel-indices" class="panel-admin">
+            <div class="titulo-section">
+                <h2>Analítica general</h2>
+                <p>Indicadores principales para revisar salud comercial, catálogo y operación.</p>
+            </div>
+
+            <div id="estadisticas">
+                <article class="card-estadistica">
+                    <h3>Total productos</h3>
+                    <strong id="total-productos">0</strong>
+                    <p>Productos activos del catálogo</p>
+                </article>
+
+                <article class="card-estadistica">
+                    <h3>Productos en oferta</h3>
+                    <strong id="total-ofertas">0</strong>
+                    <p>Productos con promoción activa</p>
+                </article>
+
+                <article class="card-estadistica">
+                    <h3>Stock total</h3>
+                    <strong id="total-stock">0</strong>
+                    <p>Unidades disponibles</p>
+                </article>
+
+                <article class="card-estadistica">
+                    <h3>Pedidos y ventas registradas</h3>
+                    <strong id="total-pedidos">0</strong>
+                    <p>Pedidos registrados</p>
+                </article>
+
+                <article class="card-estadistica solo-admin">
+                    <h3>Equipo de vendedores</h3>
+                    <strong id="total-vendedores">0</strong>
+                    <p>Cuentas con rol vendedor</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="panel-productos" class="panel-admin">
+
+            <div class="titulo-section">
+                <h2 id="titulo-productos-admin">Catálogo general de productos</h2>
+                <p id="subtitulo-productos-admin">
+                    Vista administrativa completa: productos de tienda y productos asignados a vendedores.
+                </p>
+            </div>
+
+            <div class="admin-layout">
+
+                <form id="form-producto">
+                    <input type="hidden" id="producto-id">
+
+                    <h3 id="titulo-form">Agregar producto</h3>
+
+                    <label for="nombre">Nombre del producto</label>
+                    <input type="text" id="nombre" placeholder="Ej: Audífonos inalámbricos">
+
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria">
+                        <option value="moda">Moda</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="hogar">Hogar</option>
+                        <option value="estudio">Estudio</option>
+                        <option value="belleza">Belleza</option>
+                        <option value="deportes">Deportes</option>
+                        <option value="juguetes">Juguetes</option>
+                    </select>
+
+                    <label for="tipo-producto">Tipo de producto <span class="texto-opcional">(opcional)</span></label>
+                    <input type="text" id="tipo-producto" list="tipos-producto-opciones" placeholder="Ej: Celular, zapatillas, lámpara">
+                    <datalist id="tipos-producto-opciones"></datalist>
+                    <small class="ayuda-campo">El tipo ayuda a mostrar sugerencias adecuadas, pero no es obligatorio.</small>
+
+                    <div class="form-doble">
+                        <div>
+                            <label for="precio">Precio actual</label>
+                            <input type="number" id="precio" placeholder="79.90" step="0.01">
+                        </div>
+
+                        <div>
+                            <label for="precioAntes">Precio anterior</label>
+                            <input type="number" id="precioAntes" placeholder="99.90" step="0.01">
+                        </div>
+                    </div>
+
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" placeholder="10">
+
+                    <div class="editor-caracteristicas">
+                        <label class="check-caracteristicas" for="usar-caracteristicas">
+                            <input type="checkbox" id="usar-caracteristicas">
+                            Agregar características opcionales
+                        </label>
+                        <small class="ayuda-campo">Tú decides cuáles agregar. Las sugerencias cambian según la categoría y el tipo de producto.</small>
+
+                        <div id="panel-caracteristicas" class="panel-caracteristicas oculto" aria-hidden="true">
+                            <div id="sugerencias-caracteristicas" class="sugerencias-caracteristicas"></div>
+                            <div id="lista-caracteristicas" class="lista-caracteristicas"></div>
+                            <button type="button" id="agregar-caracteristica" class="btn-agregar-caracteristica">+ Agregar otra característica</button>
+                        </div>
+                    </div>
+
+                    <div id="grupo-vendedor-producto" class="oculto">
+                        <label for="producto-vendedor">Vendedor asignado</label>
+                        <select id="producto-vendedor">
+                            <option value="">Producto general de tienda</option>
+                        </select>
+                    </div>
+
+                    <label for="imagen-producto">Imágenes del producto</label>
+                    <input type="file" id="imagen-producto" accept="image/*" multiple>
+                    <small class="ayuda-campo">Puedes seleccionar varias fotos al mismo tiempo o agregarlas una por una. La primera será la principal.</small>
+
+                    <input type="hidden" id="imagen-producto-valor">
+                    <input type="hidden" id="imagenes-producto-valor">
+
+                    <div id="preview-producto" class="preview-producto preview-galeria oculto">
+                        <div id="preview-producto-lista" class="preview-lista"></div>
+                    </div>
+
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" placeholder="Descripción corta del producto"></textarea>
+
+                    <label for="detalles-adicionales">Detalles adicionales</label>
+                    <textarea id="detalles-adicionales" placeholder="Especificaciones, contenido de la caja, medidas, cuidados u otra información importante"></textarea>
+
+                    <label class="check-oferta">
+                        <input type="checkbox" id="oferta">
+                        Producto en oferta
+                    </label>
+
+                    <label class="check-oferta">
+                        <input type="checkbox" id="destacado">
+                        Producto destacado
+                    </label>
+
+                    <div class="botones-form">
+                        <button type="submit" id="btn-guardar">Guardar</button>
+                        <button type="button" id="btn-limpiar">Limpiar</button>
+                    </div>
+                </form>
+
+                <div class="tabla-contenedor">
+
+                    <div class="acciones-tabla">
+                        <input type="text" id="buscar-admin" placeholder="Buscar producto...">
+
+                        <select id="filtro-categoria">
+                            <option value="todos">Todas las categorías</option>
+                            <option value="moda">Moda</option>
+                            <option value="tecnologia">Tecnología</option>
+                            <option value="hogar">Hogar</option>
+                            <option value="estudio">Estudio</option>
+                            <option value="belleza">Belleza</option>
+                            <option value="deportes">Deportes</option>
+                            <option value="juguetes">Juguetes</option>
+                        </select>
+
+                        <select id="filtro-vendedor-productos">
+                            <option value="todos">Todos los productos</option>
+                            <option value="general">Solo productos generales</option>
+                        </select>
+
+                        <button type="button" id="btn-productos-todos" class="btn-secundario">Ver catálogo completo</button>
+                        <button type="button" id="btn-productos-generales" class="btn-secundario">Ver productos generales</button>
+                    </div>
+
+
+                    <div class="tabla-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Producto</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Oferta</th>
+                                    <th>Vendedor</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-productos"></tbody>
+                        </table>
+                    </div>
+                    <div class="paginacion-admin">
+                        <button type="button" id="productos-prev">Anterior</button>
+                        <span id="productos-page-info">Página 1</span>
+                        <button type="button" id="productos-next">Siguiente</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="panel-banners" class="panel-admin">
+
+            <div class="titulo-section">
+                <h2>Banners de ofertas</h2>
+                <p>
+                    Cambia las imágenes que aparecen en el carrusel automático de la página de productos.
+                    Puedes agregar imágenes desde tu computadora.
+                </p>
+            </div>
+
+            <div class="admin-layout banners-layout">
+
+                <form id="form-banner">
+                    <input type="hidden" id="banner-id">
+
+                    <h3 id="titulo-form-banner">Agregar banner</h3>
+
+                    <label for="banner-titulo">Título del banner</label>
+                    <input type="text" id="banner-titulo" placeholder="Ej: Oferta de verano">
+
+                    <label for="banner-descripcion">Descripción corta</label>
+                    <textarea id="banner-descripcion" placeholder="Ej: Descuentos especiales por tiempo limitado"></textarea>
+
+                    <label for="banner-imagen">Imagen del banner</label>
+                    <input type="file" id="banner-imagen" accept="image/*">
+
+                    <input type="hidden" id="banner-imagen-valor">
+
+                    <div id="preview-banner" class="preview-banner oculto">
+                        <img id="preview-banner-img" src="img/logo.png" alt="Vista previa del banner">
+                    </div>
+
+                    <label class="check-oferta">
+                        <input type="checkbox" id="banner-activo" checked>
+                        Banner activo
+                    </label>
+
+                    <div class="botones-form">
+                        <button type="submit" id="btn-guardar-banner">Guardar banner</button>
+                        <button type="button" id="btn-limpiar-banner">Limpiar</button>
+                    </div>
+                </form>
+
+                <div class="tabla-contenedor">
+                    <div class="acciones-tabla acciones-banner">
+                        <input type="text" id="buscar-banner" placeholder="Buscar banner...">
+                    </div>
+
+                    <div id="lista-banners" class="lista-banners"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="panel-ventas" class="panel-admin">
+
+            <div class="titulo-section">
+                <h2 id="titulo-pedidos-admin">Pedidos y ventas generales</h2>
+                <p id="subtitulo-pedidos-admin">Vista administrativa completa de pedidos registrados.</p>
+            </div>
+
+            <div class="pedidos-contenedor">
+                <div class="filtros-pedidos-admin">
+                    <select id="filtro-vendedor-pedidos">
+                        <option value="todos">Todos los pedidos</option>
+                    </select>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N° Pedido</th>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Total</th>
+                            <th>Descuento</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            <th>Historial</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabla-pedidos"></tbody>
+                </table>
+                <div class="paginacion-admin">
+                    <button type="button" id="pedidos-prev">Anterior</button>
+                    <span id="pedidos-page-info">Página 1</span>
+                    <button type="button" id="pedidos-next">Siguiente</button>
+                </div>
+            </div>
+            <div id="historial-pedido-panel" class="detalle-panel oculto"></div>
+
+        </section>
+
+        <section id="panel-cupones" class="panel-admin">
+            <div class="titulo-section">
+                <h2>Marketing y cupones de descuento</h2>
+                <p>Administra cupones globales para toda la tienda o cupones de vendedor aplicables solo a sus productos.</p>
+            </div>
+
+            <div class="admin-layout usuarios-layout">
+                <form id="form-cupon">
+                    <input type="hidden" id="cupon-id">
+                    <h3 id="titulo-form-cupon">Agregar cupón</h3>
+
+                    <label for="cupon-codigo">Código</label>
+                    <input type="text" id="cupon-codigo" placeholder="Ej: FAST10">
+
+                    <label for="cupon-descripcion">Descripción</label>
+                    <textarea id="cupon-descripcion" placeholder="Ej: Descuento por campaña semanal"></textarea>
+
+                    <div class="form-doble">
+                        <div>
+                            <label for="cupon-tipo">Tipo</label>
+                            <select id="cupon-tipo">
+                                <option value="GLOBAL">Global / todos los productos</option>
+                                <option value="VENDEDOR">Solo productos de vendedor</option>
+                                <option value="CATEGORIA">Solo una categoría</option>
+                                <option value="PRODUCTO">Solo un producto</option>
+                            </select>
+                        </div>
+                        <div id="grupo-cupon-vendedor">
+                            <label for="cupon-vendedor">Vendedor</label>
+                            <select id="cupon-vendedor"><option value="">Seleccionar vendedor</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-doble">
+                        <div id="grupo-cupon-categoria" class="oculto">
+                            <label for="cupon-categoria">Categoría objetivo</label>
+                            <select id="cupon-categoria">
+                                <option value="moda">Moda</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="hogar">Hogar</option>
+                                <option value="estudio">Estudio</option>
+                                <option value="belleza">Belleza</option>
+                                <option value="deportes">Deportes</option>
+                                <option value="juguetes">Juguetes</option>
+                            </select>
+                        </div>
+                        <div id="grupo-cupon-producto" class="oculto">
+                            <label for="cupon-producto">Producto objetivo</label>
+                            <select id="cupon-producto"><option value="">Seleccionar producto</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-doble">
+                        <div>
+                            <label for="cupon-porcentaje">Porcentaje %</label>
+                            <input type="number" id="cupon-porcentaje" placeholder="10" step="0.01">
+                        </div>
+                        <div>
+                            <label for="cupon-monto">Monto fijo S/</label>
+                            <input type="number" id="cupon-monto" placeholder="5.00" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-doble">
+                        <div>
+                            <label for="cupon-minimo">Compra mínima</label>
+                            <input type="number" id="cupon-minimo" placeholder="0.00" step="0.01">
+                        </div>
+                        <div>
+                            <label for="cupon-usos">Límite de usos</label>
+                            <input type="number" id="cupon-usos" placeholder="Sin límite">
+                        </div>
+                    </div>
+
+
+                    <div class="form-doble">
+                        <div>
+                            <label for="cupon-inicio">Inicio del cupón</label>
+                            <input type="datetime-local" id="cupon-inicio">
+                        </div>
+                        <div>
+                            <label for="cupon-fin">Fin del cupón</label>
+                            <input type="datetime-local" id="cupon-fin">
+                            <small class="texto-ayuda">Si lo dejas vacío, dura 30 días.</small>
+                        </div>
+                    </div>
+
+                    <label class="check-oferta"><input type="checkbox" id="cupon-activo" checked> Cupón activo</label>
+
+                    <div class="botones-form">
+                        <button type="submit">Guardar cupón</button>
+                        <button type="button" id="btn-limpiar-cupon">Limpiar</button>
+                    </div>
+                </form>
+
+                <div class="usuarios-contenedor">
+                    <div class="acciones-tabla acciones-usuarios">
+                        <input type="text" id="buscar-cupon" placeholder="Buscar cupón...">
+                    </div>
+                    <div class="tabla-scroll">
+                        <table>
+                            <thead><tr><th>Código</th><th>Tipo</th><th>Descuento</th><th>Vigencia</th><th>Usos</th><th>Estado</th><th>Acciones</th></tr></thead>
+                            <tbody id="tabla-cupones"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="historial-cupon-panel" class="detalle-panel oculto"></div>
+        </section>
+
+        <section id="panel-vendedores" class="panel-admin">
+            <div class="titulo-section">
+                <h2>Equipo de vendedores</h2>
+                <p>Revisa cada vendedor, sus productos, ventas y pedidos relacionados. Los botones ahora filtran por vendedor y no muestran el catálogo completo.</p>
+            </div>
+            <div class="vendedores-grid" id="lista-vendedores-admin"></div>
+        </section>
+
+        <section id="panel-usuarios" class="panel-admin solo-admin">
+
+            <div class="titulo-section">
+                <h2>Usuarios y permisos</h2>
+                <p>Crea administradores, registra usuarios internos y cambia roles o estados de cuenta.</p>
+            </div>
+
+            <div class="admin-layout usuarios-layout">
+
+                <form id="form-usuario-admin">
+                    <input type="hidden" id="usuario-admin-id">
+
+                    <h3 id="titulo-form-usuario">Agregar usuario</h3>
+
+                    <label for="usuario-nombre">Nombre</label>
+                    <input type="text" id="usuario-nombre" placeholder="Ej: Juan Pérez">
+
+                    <label for="usuario-correo">Correo</label>
+                    <input type="email" id="usuario-correo" placeholder="admin@correo.com">
+
+                    <label for="usuario-password">Contraseña</label>
+                    <input type="password" id="usuario-password" placeholder="Mínimo 8 caracteres, mayúscula, minúscula y número">
+                    <small id="password-ayuda">Para editar, deja vacío si no deseas cambiar la contraseña.</small>
+
+                    <div class="form-doble">
+                        <div>
+                            <label for="usuario-telefono">Teléfono</label>
+                            <input type="text" id="usuario-telefono" placeholder="999999999">
+                        </div>
+
+                        <div>
+                            <label for="usuario-documento">Documento</label>
+                            <input type="text" id="usuario-documento" placeholder="DNI/RUC">
+                        </div>
+                    </div>
+
+                    <div class="form-doble">
+                        <div>
+                            <label for="usuario-rol">Rol</label>
+                            <select id="usuario-rol">
+                                <option value="CLIENTE">Cliente</option>
+                                <option value="ADMIN">Administrador</option>
+                                <option value="VENDEDOR">Vendedor</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="usuario-estado">Estado</label>
+                            <select id="usuario-estado">
+                                <option value="ACTIVO">Activo</option>
+                                <option value="INACTIVO">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="botones-form">
+                        <button type="submit" id="btn-guardar-usuario">Guardar</button>
+                        <button type="button" id="btn-limpiar-usuario">Limpiar</button>
+                    </div>
+                </form>
+
+                <div class="usuarios-contenedor">
+                    <div class="acciones-tabla acciones-usuarios">
+                        <input type="text" id="buscar-usuario" placeholder="Buscar por nombre, correo o rol...">
+
+                        <select id="filtro-rol-usuario">
+                            <option value="todos">Todos los roles</option>
+                            <option value="ADMIN">Administradores</option>
+                            <option value="CLIENTE">Clientes</option>
+                            <option value="VENDEDOR">Equipo de vendedores</option>
+                        </select>
+                    </div>
+
+                    <div class="tabla-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                    <th>Teléfono</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-usuarios"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="panel-index" class="panel-admin">
+
+            <div class="titulo-section">
+                <h2>Contenido del index</h2>
+                <p>Edita únicamente las secciones visibles permitidas: Destacados, Promociones, Opiniones y Ayuda.</p>
+            </div>
+
+            <div class="admin-layout">
+                <form id="form-index">
+                    <input type="hidden" id="index-id">
+
+                    <h3 id="titulo-form-index">Agregar contenido</h3>
+
+                    <label for="index-tipo">Sección editable</label>
+                    <select id="index-tipo">
+                        <option value="destacado">Destacados</option>
+                        <option value="promocion">Promociones</option>
+                        <option value="opinion">Opiniones</option>
+                        <option value="ayuda">Ayuda / Preguntas frecuentes</option>
+                    </select>
+
+                    <label for="index-clave">Clave</label>
+                    <input type="text" id="index-clave" placeholder="Ej: intro, producto-1, punto-1, oferta, boton, pregunta-1">
+                    <small class="ayuda-campo">Usa <b>intro</b> para títulos de sección. En Destacados usa <b>producto-1</b>, <b>producto-2</b>. En Ayuda usa <b>pregunta-1</b>.</small>
+
+                    <label for="index-titulo">Título</label>
+                    <input type="text" id="index-titulo" placeholder="Título visible">
+
+                    <label for="index-descripcion">Descripción</label>
+                    <textarea id="index-descripcion" placeholder="Texto que se mostrará en el index"></textarea>
+
+                    <label for="index-imagen">Imagen, ícono o emoji</label>
+                    <input type="text" id="index-imagen" placeholder="Ej: 🎧, img/producto.png o URL">
+
+                    <label for="index-enlace">Enlace / precio / texto corto</label>
+                    <input type="text" id="index-enlace" placeholder="Ej: S/ 79.90 o productos.html">
+
+                    <label for="index-orden">Orden</label>
+                    <input type="number" id="index-orden" value="1">
+
+                    <label class="check-oferta">
+                        <input type="checkbox" id="index-activo" checked>
+                        Activo
+                    </label>
+
+                    <div class="botones-form">
+                        <button type="submit">Guardar contenido</button>
+                        <button type="button" id="btn-limpiar-index">Limpiar</button>
+                    </div>
+                </form>
+
+                <div class="tabla-contenedor">
+                    <div class="acciones-tabla">
+                        <input type="text" id="buscar-index" placeholder="Buscar en Destacados, Promociones, Opiniones o Ayuda...">
+                    </div>
+
+                    <div class="tabla-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Clave</th>
+                                    <th>Título</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-index"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="panel-powerbi" class="panel-admin">
+            <div class="titulo-section titulo-reporte-admin">
+                <div>
+                    <h2>Reportes y estadísticas</h2>
+                    <p>Analiza usuarios, accesos, ventas, pedidos, productos y reclamos usando información real de FastMarket.</p>
+                </div>
+                <span class="reporte-insignia">Datos de la tienda</span>
+            </div>
+
+            <div class="reporte-filtros">
+                <div>
+                    <label for="reporte-periodo">Periodo</label>
+                    <select id="reporte-periodo">
+                        <option value="hoy">Hoy</option>
+                        <option value="7">Últimos 7 días</option>
+                        <option value="30" selected>Últimos 30 días</option>
+                        <option value="90">Últimos 90 días</option>
+                        <option value="mes">Este mes</option>
+                        <option value="anio">Este año</option>
+                        <option value="personalizado">Personalizado</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="reporte-desde">Desde</label>
+                    <input type="date" id="reporte-desde">
+                </div>
+                <div>
+                    <label for="reporte-hasta">Hasta</label>
+                    <input type="date" id="reporte-hasta">
+                </div>
+                <div class="reporte-acciones">
+                    <button type="button" id="btn-actualizar-reporte">Actualizar</button>
+                    <button type="button" id="btn-exportar-reporte" class="btn-secundario">Exportar CSV</button>
+                </div>
+                <p id="reporte-estado" class="reporte-estado">Selecciona un periodo para consultar los indicadores.</p>
+            </div>
+
+            <div class="reporte-kpis">
+                <article><span>Usuarios registrados</span><strong id="rep-usuarios-total">0</strong><small id="rep-usuarios-nuevos">0 nuevos</small></article>
+                <article><span>Inicios de sesión</span><strong id="rep-sesiones">0</strong><small id="rep-sesiones-unicas">0 usuarios únicos</small></article>
+                <article><span>Intentos fallidos</span><strong id="rep-sesiones-fallidas">0</strong><small>Accesos no completados</small></article>
+                <article><span>Ventas registradas</span><strong id="rep-ventas">0</strong><small id="rep-pedidos-total">0 pedidos totales</small></article>
+                <article class="kpi-destacado"><span>Ingresos</span><strong id="rep-ingresos">S/ 0.00</strong><small id="rep-ticket">Ticket S/ 0.00</small></article>
+                <article><span>Unidades vendidas</span><strong id="rep-unidades">0</strong><small id="rep-clientes">0 compradores</small></article>
+                <article><span>Pedidos entregados</span><strong id="rep-entregados">0</strong><small id="rep-tasa-entrega">0% de entrega</small></article>
+                <article><span>Pedidos cancelados</span><strong id="rep-cancelados">0</strong><small id="rep-tasa-cancelacion">0% de cancelación</small></article>
+                <article><span>Reclamos</span><strong id="rep-reclamos">0</strong><small id="rep-reclamos-pendientes">0 pendientes</small></article>
+                <article><span>Stock crítico</span><strong id="rep-stock-critico">0</strong><small id="rep-stock-agotado">0 agotados</small></article>
+                <article><span>Descuentos otorgados</span><strong id="rep-descuentos">S/ 0.00</strong><small id="rep-envios">Envíos S/ 0.00</small></article>
+                <article><span>Clientes recurrentes</span><strong id="rep-recurrentes">0</strong><small>Más de una compra</small></article>
+            </div>
+
+            <div class="reporte-graficos-grid">
+                <article class="reporte-card reporte-card-ancha">
+                    <div class="reporte-card-titulo"><div><h3>Ventas por día</h3><p>Ingresos de pedidos no cancelados.</p></div></div>
+                    <div id="grafico-ventas-diarias" class="grafico-barras"></div>
+                </article>
+                <article class="reporte-card">
+                    <div class="reporte-card-titulo"><div><h3>Inicios de sesión</h3><p>Accesos correctos y fallidos.</p></div></div>
+                    <div id="grafico-sesiones-diarias" class="grafico-barras"></div>
+                </article>
+                <article class="reporte-card">
+                    <div class="reporte-card-titulo"><div><h3>Actividad del sistema</h3><p>Registros, pedidos y reclamos por día.</p></div></div>
+                    <div id="grafico-actividad-diaria" class="grafico-barras"></div>
+                </article>
+            </div>
+
+            <div class="reporte-distribuciones">
+                <article class="reporte-card"><h3>Usuarios por rol</h3><div id="rep-tabla-roles" class="tabla-resumen"></div></article>
+                <article class="reporte-card"><h3>Pedidos por estado</h3><div id="rep-tabla-estados" class="tabla-resumen"></div></article>
+                <article class="reporte-card"><h3>Métodos de pago</h3><div id="rep-tabla-pagos" class="tabla-resumen"></div></article>
+                <article class="reporte-card"><h3>Reclamos por tipo</h3><div id="rep-tabla-reclamos-tipo" class="tabla-resumen"></div></article>
+                <article class="reporte-card"><h3>Reclamos por estado</h3><div id="rep-tabla-reclamos-estado" class="tabla-resumen"></div></article>
+                <article class="reporte-card"><h3>Productos por categoría</h3><div id="rep-tabla-categorias" class="tabla-resumen"></div></article>
+            </div>
+
+            <div class="reporte-tablas-grid">
+                <article class="reporte-card">
+                    <div class="reporte-card-titulo"><div><h3>Productos más vendidos</h3><p>Ranking por unidades dentro del periodo.</p></div></div>
+                    <div class="tabla-scroll"><table><thead><tr><th>Producto</th><th>Unidades</th><th>Ventas</th></tr></thead><tbody id="rep-top-productos"></tbody></table></div>
+                </article>
+                <article class="reporte-card">
+                    <div class="reporte-card-titulo"><div><h3>Stock crítico</h3><p>Productos con cinco unidades o menos.</p></div></div>
+                    <div class="tabla-scroll"><table><thead><tr><th>Producto</th><th>Categoría</th><th>Stock</th><th>Responsable</th></tr></thead><tbody id="rep-stock-tabla"></tbody></table></div>
+                </article>
+            </div>
+
+            <article class="reporte-card reporte-reclamos-card">
+                <div class="reporte-card-titulo">
+                    <div><h3>Reclamos recientes</h3><p>Revisa el detalle, cambia el estado y registra la respuesta al cliente.</p></div>
+                </div>
+                <div class="tabla-scroll">
+                    <table class="tabla-reclamos-admin">
+                        <thead><tr><th>Código / fecha</th><th>Cliente</th><th>Tipo y pedido</th><th>Detalle</th><th>Estado y respuesta</th><th>Acción</th></tr></thead>
+                        <tbody id="rep-reclamos-tabla"></tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+                <footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="producto-caracteristicas.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

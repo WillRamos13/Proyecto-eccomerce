@@ -1,0 +1,807 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --naranja: #fd6403;
+    --naranja-oscuro: #e25700;
+    --negro: #111827;
+    --gris: #6b7280;
+    --gris-claro: #f3f4f6;
+    --borde: #e5e7eb;
+    --rojo: #dc2626;
+    --verde: #16a34a;
+}
+
+html {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--negro);
+}
+
+
+#header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(10px);
+}
+
+#cabeza {
+    width: 100%;
+    max-width: 1500px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 1%;
+}
+
+#logo {
+    width: 130px;
+    height: auto;
+}
+
+.barra {
+    margin: 10px 1%;
+}
+
+#nav-menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#nav-menu ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#nav-menu ul li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#nav-menu ul li a {
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+#nav-menu ul li a:hover {
+    color: var(--naranja);
+    border-bottom: 2px solid var(--naranja);
+}
+
+
+#busqueda {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icono-menu {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+}
+
+#buscador {
+    position: absolute;
+    right: 0;
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: all 0.4s ease;
+}
+
+#busqueda.activo #buscador {
+    width: 180px;
+    opacity: 1;
+    padding: 0.5rem 1rem;
+}
+
+
+#cliente-area {
+    position: relative;
+}
+
+#login-btn {
+    font-size: 1rem;
+    background-color: var(--naranja);
+    padding: 6px 1.2rem;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.oculto {
+    display: none !important;
+}
+
+#cliente-menu {
+    position: relative;
+}
+
+#btn-cliente {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.65);
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+#btn-cliente:hover {
+    color: var(--naranja);
+    border-color: var(--naranja);
+}
+
+#opciones-cliente {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: 220px;
+    background-color: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    display: none;
+}
+
+#opciones-cliente.activo {
+    display: block;
+}
+
+#opciones-cliente button,
+#opciones-cliente a {
+    width: 100%;
+    display: block;
+    padding: 13px 18px;
+    background-color: white;
+    color: #111827;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+#opciones-cliente button:hover,
+#opciones-cliente a:hover {
+    background-color: #fff7ed;
+    color: #fd6403;
+}
+#cerrar-sesion-cliente {
+    color: var(--rojo) !important;
+    font-weight: bold;
+}
+
+
+#perfil-main {
+    padding-top: 80px;
+}
+
+#perfil-hero {
+    min-height: 45vh;
+    padding: 90px 5%;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(120deg, rgba(17, 24, 39, 0.96), rgba(17, 24, 39, 0.84)),
+        url("img/fondo1.png");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+#perfil-hero div {
+    max-width: 760px;
+}
+
+.subtitulo {
+    color: var(--naranja);
+    font-weight: bold;
+}
+
+#perfil-hero h1 {
+    font-size: 3rem;
+    margin: 15px 0;
+}
+
+#perfil-hero p {
+    color: #d1d5db;
+    line-height: 1.7;
+}
+
+
+#perfil-resumen {
+    padding: 35px 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+#perfil-resumen article {
+    background-color: white;
+    padding: 25px;
+    border-radius: 22px;
+    border-left: 5px solid var(--naranja);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+}
+
+#perfil-resumen h3 {
+    margin: 0 0 10px 0;
+}
+
+#perfil-resumen strong {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--naranja);
+    word-break: break-word;
+}
+
+#perfil-resumen p {
+    color: var(--gris);
+}
+
+
+#zona-perfil {
+    padding: 60px 5% 90px 5%;
+}
+
+#perfil-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+#perfil-menu-lateral {
+    background-color: white;
+    padding: 25px;
+    border-radius: 24px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+    position: sticky;
+    top: 105px;
+}
+
+#perfil-menu-lateral h2 {
+    margin-top: 0;
+}
+
+#perfil-menu-lateral a,
+#perfil-menu-lateral button {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: var(--negro);
+    background-color: #f9fafb;
+    border: 1px solid var(--borde);
+    padding: 13px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: left;
+}
+
+#perfil-menu-lateral a:hover,
+#perfil-menu-lateral button:hover {
+    background-color: #fff7ed;
+    color: var(--naranja);
+    border-color: var(--naranja);
+}
+
+#btn-cerrar-lateral {
+    color: var(--rojo) !important;
+    font-weight: bold;
+}
+
+
+#perfil-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.perfil-card,
+#mensaje-sin-sesion {
+    background-color: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+}
+
+#mensaje-sin-sesion {
+    text-align: center;
+}
+
+#mensaje-sin-sesion p {
+    color: var(--gris);
+}
+
+#mensaje-sin-sesion a {
+    display: inline-block;
+    background-color: var(--naranja);
+    color: white;
+    text-decoration: none;
+    padding: 13px 26px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.titulo-card h2 {
+    margin-top: 0;
+}
+
+.titulo-card p {
+    color: var(--gris);
+    line-height: 1.6;
+}
+
+.perfil-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-card label {
+    font-weight: bold;
+    margin: 16px 0 8px 0;
+}
+
+.perfil-card input {
+    padding: 14px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.perfil-card input:focus {
+    border-color: var(--naranja);
+}
+
+.perfil-card button {
+    margin-top: 22px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background-color: var(--naranja);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.perfil-card button:hover {
+    background-color: var(--naranja-oscuro);
+}
+
+.mensaje {
+    min-height: 22px;
+    margin-bottom: 0;
+}
+
+
+#lista-direcciones {
+    margin-top: 22px;
+}
+
+.direccion-item {
+    background-color: #f9fafb;
+    padding: 16px;
+    border-radius: 16px;
+    border-left: 5px solid var(--naranja);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.direccion-item p {
+    color: var(--gris);
+    margin: 0;
+}
+
+.direccion-item button {
+    margin: 0;
+    width: auto;
+    background-color: white;
+    color: var(--rojo);
+    border: 1px solid var(--borde);
+    padding: 8px 12px;
+}
+
+
+.pedido-acceso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    background-color: #f9fafb;
+    padding: 20px;
+    border-radius: 18px;
+}
+
+.pedido-acceso p {
+    color: var(--gris);
+}
+
+.pedido-acceso a {
+    background-color: var(--naranja);
+    color: white;
+    padding: 13px 22px;
+    border-radius: 22px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+#chat-soporte {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 250px;
+    height: 250px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.robot-3d {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#chat-box {
+    opacity: 0.97;
+    position: fixed;
+    bottom: 230px;
+    right: 30px;
+    width: 320px;
+    height: 430px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1600;
+    font-family: Arial, sans-serif;
+}
+
+#chat-header {
+    background: var(--naranja);
+    color: white;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cerrar-chat {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#chat-mensajes {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    background: var(--gris-claro);
+}
+
+.mensaje-chat {
+    padding: 10px 12px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    max-width: 85%;
+    font-size: 14px;
+}
+
+.usuario {
+    background: var(--naranja);
+    color: white;
+    margin-left: auto;
+}
+
+.bot {
+    background: white;
+    color: var(--negro);
+    margin-right: auto;
+}
+
+#chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+#mensaje {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    outline: none;
+}
+
+#enviar {
+    border: none;
+    background: var(--naranja);
+    color: white;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+#chat-mensajes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mensaje-user {
+    align-self: flex-end;
+    max-width: 75%;
+    background: #fd6403;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 16px 16px 4px 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    box-shadow: 0 4px 12px rgba(253, 100, 3, 0.25);
+}
+
+.mensaje-bot {
+    align-self: flex-start;
+    max-width: 75%;
+    background: #ffffff;
+    color: #111827;
+    padding: 10px 14px;
+    border-radius: 16px 16px 16px 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+#pie-de-pagina {
+    background-color: black;
+    color: white;
+    padding: 45px 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+}
+
+#pie-de-pagina p,
+#pie-de-pagina a {
+    color: #d1d5db;
+}
+
+#pie-de-pagina a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+#pie-de-pagina a:hover {
+    color: var(--naranja);
+}
+
+
+@media (max-width: 1100px) {
+    #nav-menu ul li a {
+        padding: 10px 10px;
+        font-size: 0.85rem;
+    }
+
+    #perfil-resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #perfil-layout {
+        grid-template-columns: 1fr;
+    }
+
+    #perfil-menu-lateral {
+        position: static;
+    }
+}
+
+@media (max-width: 900px) {
+    #header {
+        height: auto;
+    }
+
+    #cabeza {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    #nav-menu ul {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #perfil-main {
+        padding-top: 150px;
+    }
+
+    #perfil-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    #chat-soporte {
+        width: 180px;
+        height: 180px;
+    }
+
+    #chat-box {
+        width: 90%;
+        right: 5%;
+        bottom: 180px;
+    }
+
+    #pie-de-pagina {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    #perfil-resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .direccion-item,
+    .pedido-acceso {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pedido-acceso a {
+        width: 100%;
+        text-align: center;
+    }
+}
+/* ===== Reclamos del cliente ===== */
+.form-reclamo-cliente select,
+.form-reclamo-cliente textarea {
+    padding: 14px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    outline: none;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fff;
+}
+
+.form-reclamo-cliente textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.form-reclamo-cliente select:focus,
+.form-reclamo-cliente textarea:focus {
+    border-color: var(--naranja);
+}
+
+.reclamo-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.reclamo-form-grid > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.reclamo-form-grid label span {
+    color: var(--gris);
+    font-size: .82rem;
+    font-weight: normal;
+}
+
+.lista-reclamos-cliente {
+    display: grid;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.reclamo-cliente-item {
+    padding: 18px;
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    background: #f9fafb;
+}
+
+.reclamo-cliente-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.reclamo-cliente-cabecera h3 {
+    margin: 0 0 5px;
+    font-size: 1rem;
+}
+
+.reclamo-cliente-cabecera small,
+.reclamo-cliente-item p {
+    color: var(--gris);
+}
+
+.reclamo-cliente-item p {
+    margin: 8px 0;
+    line-height: 1.55;
+}
+
+.reclamo-estado {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: .74rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.reclamo-estado.abierto { background: #fee2e2; color: #b91c1c; }
+.reclamo-estado.en_revision { background: #fef3c7; color: #92400e; }
+.reclamo-estado.resuelto,
+.reclamo-estado.cerrado { background: #dcfce7; color: #166534; }
+
+.reclamo-respuesta {
+    margin-top: 13px;
+    padding: 13px;
+    border-radius: 14px;
+    background: #fff7ed;
+    border-left: 4px solid var(--naranja);
+}
+
+@media (max-width: 680px) {
+    .reclamo-form-grid { grid-template-columns: 1fr; gap: 0; }
+    .reclamo-cliente-cabecera { flex-direction: column; }
+}

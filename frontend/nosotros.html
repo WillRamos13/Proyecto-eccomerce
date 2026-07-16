@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | FastMarket</title>
+    <link rel="stylesheet" href="estilos-globales.css">
+    <link rel="stylesheet" href="carrito-global.css">
+    <link rel="stylesheet" href="nosotros.css">
+</head>
+<body>
+    <header id="header">
+        <div id="cabeza">
+            <a href="index.html">
+                <img class="barra" src="img/logo.png" id="logo" alt="Logo FastMarket">
+            </a>
+
+            <nav class="barra" id="nav-menu">
+                <ul>
+                    <li class="barra"><a href="index.html">Inicio</a></li>
+                    <li class="barra"><a href="productos.html">Productos</a></li>
+                    <li class="barra"><a href="nosotros.html" class="activo">Nosotros</a></li>
+                    <li class="barra"><a href="#pie-de-pagina">Contacto</a></li>
+
+                    <li class="barra" id="busqueda">
+                        <img src="img/lupa.png" alt="Buscar" class="icono-menu">
+                        <input type="text" placeholder="Buscar..." id="buscador">
+                    </li>
+
+                    <li class="barra" id="carrito">
+                        <a href="productos.html" aria-label="Carrito de compras">
+                            <img class="icono-menu" src="img/carrito.png" alt="Carrito">
+                        </a>
+                    </li>
+
+                    <li class="barra" id="cliente-area">
+                        <a href="login.html" id="login-btn">Iniciar sesión</a>
+                        <div id="cliente-menu" class="oculto">
+                            <button id="btn-cliente"><span id="nombre-cliente">Cliente</span> ▾</button>
+                            <div id="opciones-cliente">
+                                <a href="perfil.html">Mi perfil</a>
+                                <a href="pedidos.html">Mis pedidos</a>
+                                <button data-cliente-panel="direcciones">Direcciones</button>
+                                <button data-cliente-panel="seguridad">Seguridad</button>
+                                <button id="cerrar-sesion-cliente">Cerrar sesión</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="nosotros-main">
+        <section class="nosotros-hero">
+            <p>FastMarket</p>
+            <h1>Misión y visión</h1>
+            <span>Somos una tienda online enfocada en ofrecer una experiencia de compra clara, rápida y confiable para los clientes de Ica.</span>
+        </section>
+
+        <section class="mision-vision-grid">
+            <article class="mv-card">
+                <span>Misión</span>
+                <h2>Nuestra misión</h2>
+                <p>
+                    Brindar productos útiles y accesibles mediante una plataforma sencilla, segura y organizada,
+                    facilitando que cada cliente pueda comprar desde cualquier lugar con atención rápida y seguimiento de sus pedidos.
+                </p>
+            </article>
+
+            <article class="mv-card">
+                <span>Visión</span>
+                <h2>Nuestra visión</h2>
+                <p>
+                    Ser una tienda online reconocida en Ica por su confianza, variedad de productos y buen servicio,
+                    creciendo junto a vendedores locales y ofreciendo una experiencia moderna para todos los usuarios.
+                </p>
+            </article>
+        </section>
+
+        <section id="testimonios" class="seccion-nosotros seccion-testimonios">
+            <div class="titulo-section titulo-claro">
+                <span class="etiqueta etiqueta-clara">Opiniones</span>
+                <h2>Lo que valoran nuestros clientes</h2>
+                <p>
+                    La confianza se construye con buena atención, claridad y cumplimiento en cada pedido.
+                </p>
+            </div>
+
+            <div class="testimonios-grid">
+                <article class="testimonio">
+                    <p>
+                        “Me atendieron rápido y pude consultar antes de hacer mi compra. El proceso fue sencillo.”
+                    </p>
+                    <h4>- Cliente de Ica</h4>
+                </article>
+
+                <article class="testimonio">
+                    <p>
+                        “Encontré productos bonitos y con buen precio. Me gustó que respondieran mis dudas.”
+                    </p>
+                    <h4>- Comprador frecuente</h4>
+                </article>
+
+                <article class="testimonio">
+                    <p>
+                        “La página se ve ordenada y es fácil encontrar ofertas, productos y medios de contacto.”
+                    </p>
+                    <h4>- Usuario FastMarket</h4>
+                </article>
+            </div>
+        </section>
+
+        <section id="preguntas" class="seccion-nosotros seccion-preguntas">
+            <div class="titulo-section">
+                <span class="etiqueta">Ayuda</span>
+                <h2>Preguntas frecuentes</h2>
+                <p>
+                    Antes de comprar, revisa estas respuestas rápidas sobre productos, envíos y atención.
+                </p>
+            </div>
+
+            <div class="faq-contenedor">
+                <article class="faq-item">
+                    <h3>¿Hacen envíos a todo Ica?</h3>
+                    <p>Sí, los envíos se coordinan según la zona, disponibilidad y horario acordado.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3>¿Puedo preguntar antes de comprar?</h3>
+                    <p>Sí. Puedes escribir por el chat, redes sociales o el contacto de la tienda.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3>¿Las ofertas siempre están disponibles?</h3>
+                    <p>No siempre. Algunas promociones dependen del stock y pueden cambiar durante la semana.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3>¿Puedo ver más productos?</h3>
+                    <p>Sí. En la página de productos podrás revisar el catálogo completo de FastMarket.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+                <footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+    <div id="toast"></div>
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="carrito-global.js"></script>
+    <script src="nosotros.js"></script>
+</body>
+</html>

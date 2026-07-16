@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda | FastMarket</title>
+    <link rel="stylesheet" href="ayuda.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="cabeza">
+            <a href="index.html">
+                <img src="img/logo.png" id="logo" alt="Logo FastMarket">
+            </a>
+
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="#pie-de-pagina">Contacto</a></li>
+                    <li><a href="login.html" id="login-btn">Iniciar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="ayuda-main">
+
+        <section id="ayuda-hero">
+            <p class="subtitulo">Centro de ayuda</p>
+            <h1>¿Necesitas ayuda?</h1>
+            <p>
+                Encuentra respuestas sobre compras, pedidos, entregas,
+                recuperación de contraseña y uso de tu cuenta.
+            </p>
+        </section>
+
+        <section id="ayuda-contenido">
+
+            <div id="buscador-ayuda">
+                <input type="text" id="buscar-ayuda" placeholder="Buscar una pregunta...">
+            </div>
+
+            <div id="faq-lista">
+
+                <article class="faq-item">
+                    <h2>¿Cómo puedo registrarme?</h2>
+                    <p>
+                        Ingresa a la página de inicio de sesión, selecciona “Registrarse” y completa tus datos:
+                        nombre, correo, teléfono, dirección y contraseña.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>¿Cómo inicio sesión?</h2>
+                    <p>
+                        Entra a la página de inicio de sesión, escribe tu correo y contraseña registrados, y presiona
+                        el botón “Entrar”.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>¿Qué hago si olvidé mi contraseña?</h2>
+                    <p>
+                        Ingresa a recuperar-contrasena.html, coloca tu correo registrado y crea una
+                        nueva contraseña.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>¿Cómo agrego productos al carrito?</h2>
+                    <p>
+                        En la página de productos, presiona “Agregar al carrito”. También puedes entrar
+                        al detalle del producto y seleccionar la cantidad.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>¿Cómo finalizo una compra?</h2>
+                    <p>
+                        Dirígete a checkout.html, confirma tus productos, dirección de entrega y método
+                        de pago. Luego presiona “Confirmar pedido”.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>¿Dónde veo mis pedidos?</h2>
+                    <p>
+                        Desde el menú del cliente entra a “Mis pedidos”. Ahí verás estado, productos,
+                        total, dirección y mapa de seguimiento.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>¿Dónde se guardan mis datos?</h2>
+                    <p>
+                        Los datos principales ahora se consultan desde la base de datos; solo el carrito temporal puede usar almacenamiento del navegador porque el proyecto está
+                        en etapa frontend. Luego se conectará con Spring Boot.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>¿El mapa muestra mi ubicación real?</h2>
+                    <p>
+                        El mapa muestra una ubicación aproximada según la dirección escrita por el cliente.
+                    </p>
+                </article>
+
+            </div>
+
+            <div id="sin-resultados" class="oculto">
+                <h2>No encontramos resultados</h2>
+                <p>Intenta buscar con otra palabra.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+                <footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="ayuda.js"></script>
+</body>
+</html>

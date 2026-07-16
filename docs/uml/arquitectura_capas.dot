@@ -1,0 +1,21 @@
+digraph Arquitectura {
+ graph [rankdir=TB, bgcolor="white", pad=0.4, nodesep=0.45, ranksep=0.55, fontname="Arial", label="Arquitectura modular de FastMarket", labelloc=t, fontsize=22];
+ node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, width=7.2, height=0.7];
+ edge [color="#555555", arrowsize=0.9];
+ Front [label="Capa de presentación\nHTML5 + CSS3 + JavaScript | Cliente, vendedor y administrador", fillcolor="#FFF3E8", color="#D65A00"];
+ Controllers [label="Controladores REST (GRASP Controller)\nAuthController, ProductoController, PedidoController, ReporteController...", fillcolor="#E8F4FD", color="#2878B5"];
+ Facades [label="Casos de uso y patrones de coordinación\nComercioElectronicoFacade | ReporteSeguroProxy", fillcolor="#EAF8EE", color="#238B45"];
+ Services [label="Servicios de dominio/aplicación\nPedidoService, ProductoService, CuponService, CarritoService, AuthService...", fillcolor="#FFF4D6", color="#A06A00"];
+ Patterns [label="Patrones GOF transversales\nBuilder | Factory | Adapter | Facade | Proxy | Observer | State", fillcolor="#F0EAFB", color="#7448A5"];
+ Repositories [label="Persistencia JPA / Repository\nRepositorios especializados y transacciones", fillcolor="#FCE8EC", color="#B43C5A"];
+ DB [label="PostgreSQL\nUsuarios, productos, carritos, pedidos, cupones, historial, reclamos y configuración", fillcolor="#E9EEF3", color="#435466"];
+ APIs [label="Servicios externos\nMercado Pago | Gmail API | OpenAI API", fillcolor="#E9EEF3", color="#435466"];
+ Front -> Controllers;
+ Controllers -> Facades;
+ Controllers -> Services [style=dashed];
+ Facades -> Services;
+ Services -> Patterns [dir=both, arrowtail=none];
+ Services -> Repositories;
+ Repositories -> DB;
+ Patterns -> APIs [style=dashed];
+}

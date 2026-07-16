@@ -1,0 +1,59 @@
+digraph FastMarketUML {
+  graph [rankdir=LR, bgcolor="white", pad=0.35, nodesep=0.55, ranksep=0.9, fontname="Arial", label="FastMarket - Diagrama de clases y patrones", labelloc=t, fontsize=22];
+  node [shape=record, style="rounded,filled", fillcolor="#FFF8F1", color="#D65A00", fontname="Arial", fontsize=10];
+  edge [color="#555555", fontname="Arial", fontsize=9, arrowsize=0.8];
+
+  Usuario [label="{Usuario|id; nombre; correo; rol; estado|+getDirecciones()}" ];
+  Producto [label="{Producto|id; nombre; precio; stock; activo|+actualizarStock()}" ];
+  Pedido [label="{Pedido|codigo; subtotal; descuento; total; estado|+getItems()}" ];
+  PedidoItem [label="{PedidoItem|cantidad; precioUnitario; subtotal}" ];
+  Carrito [label="{Carrito|usuario; cuponCodigo|+getItems()}" ];
+  Cupon [label="{Cupon|codigo; tipo; valor; vigente}" ];
+
+  PedidoBuilder [fillcolor="#E8F4FD", color="#2878B5", label="{PedidoBuilder - Builder|pedido|+nuevo(); +agregarProducto(); +conTotales(); +build()}" ];
+  StateFactory [fillcolor="#E8F4FD", color="#2878B5", label="{PedidoStateFactory - Factory|estados|+crear(estado)}" ];
+  State [fillcolor="#F0EAFB", color="#7448A5", label="{EstadoPedidoState - interface State|+estado(); +validarTransicion()}" ];
+  Pendiente [fillcolor="#F0EAFB", color="#7448A5", label="{PendienteState|+transicionesPermitidas()}" ];
+  Confirmado [fillcolor="#F0EAFB", color="#7448A5", label="{ConfirmadoState|+transicionesPermitidas()}" ];
+  Camino [fillcolor="#F0EAFB", color="#7448A5", label="{CaminoState|+transicionesPermitidas()}" ];
+
+  Pasarela [fillcolor="#EAF8EE", color="#238B45", label="{PasarelaPago - interface|+crearPreferencia(); +nombre()}" ];
+  MPAdapter [fillcolor="#EAF8EE", color="#238B45", label="{MercadoPagoAdapter - Adapter|accessToken; baseUrl|+crearPreferencia()}" ];
+  PagoService [fillcolor="#FFF4D6", color="#A06A00", label="{MercadoPagoService|pasarelaPago|+crearPreferencia()}" ];
+  Facade [fillcolor="#EAF8EE", color="#238B45", label="{ComercioElectronicoFacade - Facade|pedidoService; pagoService|+procesarPedido(); +crearPreferenciaPago()}" ];
+  Proxy [fillcolor="#EAF8EE", color="#238B45", label="{ReporteSeguroProxy - Protection Proxy|authTokenService; reporteService|+generar()}" ];
+
+  Observer [fillcolor="#F0EAFB", color="#7448A5", label="{PedidoObserver - interface Observer|+actualizar(evento)}" ];
+  Publisher [fillcolor="#F0EAFB", color="#7448A5", label="{PedidoEventPublisher - Subject|observadores|+publicar(evento)}" ];
+  HistObs [fillcolor="#F0EAFB", color="#7448A5", label="{PedidoHistorialObserver|repositorio|+actualizar()}" ];
+  MailObs [fillcolor="#F0EAFB", color="#7448A5", label="{PedidoNotificacionObserver|correoService|+actualizar()}" ];
+
+  PedidoService [fillcolor="#FFF4D6", color="#A06A00", label="{PedidoService|repositorios; builder; stateFactory; publisher|+crear(); +actualizarEstado(); +listar()}" ];
+  ReporteService [fillcolor="#FFF4D6", color="#A06A00", label="{ReporteService|repositorios|+generar()}" ];
+
+  Usuario -> Pedido [label="1  realiza  *", arrowhead=vee];
+  Pedido -> PedidoItem [label="1  contiene  *", arrowhead=diamond];
+  PedidoItem -> Producto [label="*  referencia  1", arrowhead=vee];
+  Usuario -> Carrito [label="1  posee  1", arrowhead=vee];
+  Carrito -> Producto [label="incluye", style=dashed, arrowhead=vee];
+  Pedido -> Cupon [label="aplica 0..1", style=dashed, arrowhead=vee];
+
+  PedidoBuilder -> Pedido [label="construye", arrowhead=vee];
+  PedidoService -> PedidoBuilder [label="usa", style=dashed, arrowhead=vee];
+  PedidoService -> StateFactory [label="solicita estado", style=dashed, arrowhead=vee];
+  StateFactory -> State [label="crea/selecciona", arrowhead=vee];
+  Pendiente -> State [arrowhead=empty];
+  Confirmado -> State [arrowhead=empty];
+  Camino -> State [arrowhead=empty];
+
+  MPAdapter -> Pasarela [arrowhead=empty];
+  PagoService -> Pasarela [label="depende de", style=dashed, arrowhead=vee];
+  Facade -> PedidoService [label="coordina", arrowhead=vee];
+  Facade -> PagoService [label="coordina", arrowhead=vee];
+  Proxy -> ReporteService [label="delega si autoriza", arrowhead=vee];
+
+  PedidoService -> Publisher [label="publica", style=dashed, arrowhead=vee];
+  Publisher -> Observer [label="notifica *", arrowhead=vee];
+  HistObs -> Observer [arrowhead=empty];
+  MailObs -> Observer [arrowhead=empty];
+}

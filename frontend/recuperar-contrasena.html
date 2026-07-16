@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña | FastMarket</title>
+    <link rel="stylesheet" href="recuperar-contrasena.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+</head>
+
+<body>
+
+    <main id="recuperar-main">
+
+        <section id="recuperar-card">
+
+            <div id="recuperar-info">
+                <h1>Recuperar contraseña</h1>
+                <p>
+Ingresa tu correo, solicita un código de seguridad y luego crea una nueva contraseña.
+                </p>
+
+                <div class="info-pasos">
+                    <p>1. Solicitas un código por correo</p>
+                    <p>2. Ingresas el código recibido</p>
+                    <p>3. Cambias tu contraseña</p>
+                </div>
+            </div>
+
+            <form id="form-recuperar">
+
+                <h2>Cambiar contraseña</h2>
+
+                <label for="correo">Correo registrado</label>
+                <input type="email" id="correo" placeholder="cliente@gmail.com">
+                <button type="button" id="btn-enviar-codigo" class="btn-secundario-recuperar">Enviar código</button>
+
+                <label for="codigo-verificacion">Código recibido</label>
+                <input type="text" id="codigo-verificacion" maxlength="6" inputmode="numeric" placeholder="Código de 6 dígitos">
+
+                <label for="nueva-password">Nueva contraseña</label>
+                <input type="password" id="nueva-password" placeholder="Nueva contraseña">
+
+                <label for="confirmar-password">Confirmar contraseña</label>
+                <input type="password" id="confirmar-password" placeholder="Repite la contraseña">
+
+                <button type="submit">Actualizar contraseña con código</button>
+
+                <p id="mensaje-recuperar"></p>
+
+                <div class="links">
+                    <a href="login.html">Volver al inicio de sesión</a>
+                    <a href="productos.html">Ir a productos</a>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+                <footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="recuperar-contrasena.js"></script>
+</body>
+</html>

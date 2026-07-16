@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastMarket | Ecommerce moderno en Ica</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+    <link rel="stylesheet" href="carrito-global.css">
+</head>
+
+<body>
+
+    <div id="despliegue">
+        <img src="img/intro.png" alt="Imagen de inicio" id="despliegue-img">
+    </div>
+
+    <header id="header">
+        <div id="cabeza">
+            <img class="barra" src="img/logo.png" id="logo" alt="Logo FastMarket">
+
+            <nav class="barra" id="nav-menu">
+                <ul>
+                    <li class="barra"><a href="#hola">Inicio</a></li>
+                    <li class="barra"><a href="productos.html">Productos</a></li>
+                    <li class="barra"><a href="nosotros.html">Nosotros</a></li>
+                    <li class="barra"><a href="#pie-de-pagina">Contacto</a></li>
+
+                    <li class="barra" id="busqueda">
+                        <img src="img/lupa.png" alt="Buscar" class="icono-menu">
+                        <input type="text" placeholder="Buscar..." id="buscador">
+                    </li>
+
+                    <li class="barra" id="carrito">
+                        <a href="productos.html">
+                            <img class="icono-menu" src="img/carrito.png" alt="Carrito de compras">
+                        </a>
+                    </li>
+
+                    <li class="barra" id="cliente-area">
+
+                        <a href="login.html" id="login-btn">Iniciar sesión</a>
+
+                        <div id="cliente-menu" class="oculto">
+                            <button id="btn-cliente">
+                                <span id="nombre-cliente">Cliente</span> ▾
+                            </button>
+
+                            <div id="opciones-cliente">
+                                <a href="perfil.html">Mi perfil</a>
+                                <a href="pedidos.html">Mis pedidos</a>
+                                <button data-cliente-panel="direcciones">Direcciones</button>
+                                <button data-cliente-panel="seguridad">Seguridad</button>
+                                <button id="cerrar-sesion-cliente">Cerrar sesión</button>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+        <div id="overlay-cliente"></div>
+
+    <aside id="panel-cliente">
+        <div id="cliente-panel-header">
+            <h2 id="titulo-panel-cliente">Mi perfil</h2>
+            <button id="cerrar-panel-cliente">×</button>
+        </div>
+
+        <div id="contenido-panel-cliente"></div>
+    </aside>
+
+    <main id="cuerpo">
+
+                <section id="inicio" class="seccion seccion-inicio">
+            <div class="hero-contenido">
+                <div class="hero-texto">
+                    <h3 id="cuadro1">Compra simple, segura y rápida</h3>
+
+                    <h1 id="cuadro2">
+                        Moda, tecnología y accesorios<br>con ofertas para tu día a día
+                    </h1>
+
+                    <p id="cuadro3">
+                        Descubre productos seleccionados, ofertas activas y atención directa para comprar con confianza desde Ica.
+                    </p>
+
+                    <div id="cuadro4">
+                        <a href="productos.html" id="figura1">Ver catálogo</a>
+                        <a href="productos.html?ofertas=1" id="figura2">Explorar ofertas</a>
+                    </div>
+                </div>
+
+                <div id="extras">
+                    <section class="section-extra">
+                        <img class="extras-img" src="img/envios.png" alt="Envíos rápidos">
+                        <div class="cubitos">
+                            <h3>Envíos rápidos</h3>
+                            <p>a todo Ica</p>
+                        </div>
+                    </section>
+
+                    <hr class="separacion">
+
+                    <section class="section-extra">
+                        <img class="extras-img" src="img/seguridad.png" alt="Compras seguras">
+                        <div class="cubitos">
+                            <h3>Compra segura</h3>
+                            <p>datos protegidos</p>
+                        </div>
+                    </section>
+
+                    <hr class="separacion">
+
+                    <section class="section-extra">
+                        <img class="extras-img" src="img/atencion.png" alt="Atención personalizada">
+                        <div class="cubitos">
+                            <h3>Atención personalizada</h3>
+                            <p>las 24 horas</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <img id="png" src="img/abrir.png" alt="Imagen principal de tienda">
+        </section>
+<section id="categorias" class="seccion seccion-categorias">
+            <div class="titulo-section titulo-claro">
+                <span class="etiqueta">Categorías</span>
+                <h2>Revisa todas nuestras categorias disponibles</h2>
+            </div>
+
+            <div class="cards-index">
+                <article class="card-index">
+                    <div class="icono-card">Moda</div>
+                    <p>Prendas de temporadas e accesiorios para que los luzcas dia a dia</p>
+                </article>
+
+                <article class="card-index">
+                    <div class="icono-card">Tecnología</div>
+                    <p>Mantente a la vanguardia de la tecnología</p>
+                </article>
+
+                <article class="card-index">
+                    <div class="icono-card">Hogar</div>
+                    <h3>Hogar</h3>
+                    <p>Artículos para organizar, decorar y hacer más cómodo tu espacio</p>
+                </article>
+
+                <article class="card-index">hola
+                    <div class="icono-card">Estudio</div>
+                    <p>Productos pensados para clases, universidad, oficina y organización</p>
+                </article>
+
+                <article class="card-index">
+                    <div class="icono-card">Belleza</div>
+                    <h3>Belleza</h3>
+                </article>
+
+                <article class="card-index">
+                    <div class="icono-card">Dep.</div>
+                    <h3>Deportes</h3>
+                    <p>Implementos y accesorios para entrenamiento, actividad física y bienestar.</p>
+                </article>
+
+                <article class="card-index">
+                    <div class="icono-card">Juegos</div>
+                    <h3>Juguetes</h3>
+                    <p>Opciones para niños, regalos, entretenimiento y momentos divertidos.</p>
+                </article>
+            </div>
+        </section>
+
+                <section id="destacados" class="seccion seccion-destacados">
+            <div class="titulo-section">
+                <span class="etiqueta">Destacados</span>
+                <h2>Productos recomendados para ti</h2>
+                <p>
+                    Estos productos representan la idea de FastMarket: artículos útiles, llamativos
+                    y con buena relación entre precio y calidad.
+                </p>
+            </div>
+
+            <div class="productos-grid">
+                <article class="producto-card">
+                    <div class="producto-img">🎧</div>
+                    <h3>Audífonos inalámbricos</h3>
+                    <p>Ideales para clases, música, llamadas y entretenimiento.</p>
+                    <span>S/ 79.90</span>
+                </article>
+
+                <article class="producto-card">
+                    <div class="producto-img">👜</div>
+                    <h3>Bolso urbano</h3>
+                    <p>Diseño moderno para salir, estudiar o trabajar.</p>
+                    <span>S/ 59.90</span>
+                </article>
+
+                <article class="producto-card">
+                    <div class="producto-img">⌚</div>
+                    <h3>Smartwatch básico</h3>
+                    <p>Control de actividad, notificaciones y diseño cómodo.</p>
+                    <span>S/ 99.90</span>
+                </article>
+
+                <article class="producto-card">
+                    <div class="producto-img">💡</div>
+                    <h3>Lámpara decorativa</h3>
+                    <p>Perfecta para dormitorios, escritorios y espacios modernos.</p>
+                    <span>S/ 39.90</span>
+                </article>
+            </div>
+
+            <div class="boton-centro">
+                <a href="productos.html" class="boton-principal">Ver catálogo completo</a>
+            </div>
+        </section>
+
+                <section id="ofertas" class="seccion seccion-ofertas">
+            <div class="oferta-texto">
+                <span class="etiqueta etiqueta-clara">Promociones</span>
+                <h2>Ofertas que no puedes dejar pasar</h2>
+                <p>
+                    Aprovecha descuentos especiales en productos seleccionados. Nuestras ofertas
+                    pueden cambiar según temporada, disponibilidad y novedades de la tienda.
+                </p>
+
+                <div class="oferta-lista" id="oferta-lista">
+                    <p>✔ Descuentos por lanzamiento</p>
+                    <p>✔ Promociones semanales</p>
+                    <p>✔ Productos con stock limitado</p>
+                </div>
+
+                <a href="productos.html?ofertas=1" class="boton-oferta" id="boton-oferta-index">Ver ofertas disponibles</a>
+            </div>
+
+            <div class="oferta-caja">
+                <h3>Hasta 30%</h3>
+                <p>de descuento en productos seleccionados.</p>
+                <small>Promoción válida hasta agotar stock.</small>
+            </div>
+        </section>
+<footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+                <div id="chat-soporte">
+            <spline-viewer
+                class="robot-3d"
+                url="https://prod.spline.design/TeR6aLB5yvJrR1j8/scene.splinecode">
+            </spline-viewer>
+        </div>
+
+                <div id="chat-box">
+            <div id="chat-header">
+                <span>Chat rápido</span>
+                <button id="cerrar-chat">×</button>
+            </div>
+
+            <div id="chat-mensajes">
+                <div class="mensaje bot">Hola 👋 Soy el asistente de FastMarket. Puedo ayudarte con productos, promociones, compras, pedidos, envíos, pagos, reclamos y tu cuenta.</div>
+            </div>
+
+            <div id="chat-input">
+                <input type="text" id="mensaje" maxlength="1000" placeholder="Escribe tu consulta">
+                <button id="enviar">Enviar</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.88/build/spline-viewer.js"></script>
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="carrito-global.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>

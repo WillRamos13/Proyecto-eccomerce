@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar con Mercado Pago | FastMarket</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+    <link rel="stylesheet" href="carrito-global.css">
+    <link rel="stylesheet" href="mercado-pago.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="cabeza">
+            <a href="index.html">
+                <img class="barra" src="img/logo.png" id="logo" alt="Logo FastMarket">
+            </a>
+
+            <nav class="barra" id="nav-menu">
+                <ul>
+                    <li class="barra"><a href="index.html">Inicio</a></li>
+                    <li class="barra"><a href="productos.html">Productos</a></li>
+                    <li class="barra"><a href="nosotros.html">Nosotros</a></li>
+                    <li class="barra"><a href="#pie-de-pagina">Contacto</a></li>
+
+                    <li class="barra" id="busqueda">
+                        <img src="img/lupa.png" alt="Buscar" class="icono-menu">
+                        <input type="text" placeholder="Buscar..." id="buscador">
+                    </li>
+
+                    <li class="barra" id="carrito">
+                        <a href="productos.html">
+                            <img class="icono-menu" src="img/carrito.png" alt="Carrito">
+                        </a>
+                    </li>
+
+                    <li class="barra" id="cliente-area">
+                        <a href="login.html" id="login-btn">Iniciar sesión</a>
+
+                        <div id="cliente-menu" class="oculto">
+                            <button id="btn-cliente">
+                                👤 <span id="nombre-cliente">Cliente</span> ▾
+                            </button>
+
+                            <div id="opciones-cliente">
+                                <a href="perfil.html">Mi perfil</a>
+                                <a href="pedidos.html">Mis pedidos</a>
+                                <a href="perfil.html#direcciones">Direcciones</a>
+                                <a href="perfil.html#seguridad">Seguridad</a>
+                                <button id="cerrar-sesion-cliente">Cerrar sesión</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="mercado-pago-main">
+
+        <section id="mercado-pago-hero">
+            <h1>🔒 Pago Seguro con Mercado Pago</h1>
+            <p>Falta poco. Revisa tu pedido y completa el pago en Mercado Pago.</p>
+        </section>
+
+        <div id="pago-container">
+
+            <section class="mercado-pago-intro">
+                <div class="mp-step-badge">Paso 2 de 2</div>
+                <div class="mp-intro-grid">
+                    <div>
+                        <h2>Listo para pagar</h2>
+                        <p>En la siguiente pantalla usarás Mercado Pago para terminar la compra de forma rápida y segura.</p>
+                    </div>
+                    <div class="mp-logo-box">
+                        <img src="img/mercado-pago-logo.png" alt="Mercado Pago" class="mp-logo" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </section>
+
+            <div class="pago-header">
+                <h2>Resumen de Compra</h2>
+                <p>Mercado Pago garantiza el pago seguro de tu pedido</p>
+            </div>
+
+            <div class="monto-pagar">
+                <h3>Monto Total a Pagar</h3>
+                <div class="total-amount" id="total-amount">S/ 0.00</div>
+            </div>
+
+            <div class="resumen-pedido" id="resumen-detalles">
+                <div class="resumen-line">
+                    <span>Subtotal</span>
+                    <strong id="subtotal-mp">S/ 0.00</strong>
+                </div>
+                <div class="resumen-line">
+                    <span>Descuento</span>
+                    <strong id="descuento-mp">S/ 0.00</strong>
+                </div>
+                <div class="resumen-line">
+                    <span>Envío</span>
+                    <strong id="envio-mp">S/ 0.00</strong>
+                </div>
+                <div class="mp-total-divider"></div>
+                <div class="resumen-line total-line">
+                    <span>Total</span>
+                    <strong id="total-mp">S/ 0.00</strong>
+                </div>
+            </div>
+
+            <div class="pago-info">
+                <p><strong>✓ Pago 100% seguro</strong></p>
+                <p>Tu información está protegida con encriptación SSL</p>
+                <p style="margin-top: 0.5rem;">Se redirigirá a Mercado Pago para completar el pago</p>
+            </div>
+
+            <div id="estado-pago"></div>
+
+            <div class="botones-pago">
+                <button class="btn-pago btn-procesar" id="btn-procesar-pago">
+                    💳 Continuar a Mercado Pago
+                </button>
+                <button class="btn-pago btn-cancelar" id="btn-cancelar-pago">
+                    Volver al checkout
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer id="pie-de-pagina">
+        <div id="contactos-redes">
+
+            <div id="contactos-redes1">
+                <h3 id="redes">Síguenos en</h3>
+
+                <nav class="redes nav-redes">
+                    <ul>
+                        <li class="redes">
+                            <a href="https://www.instagram.com/" target="_blank">
+                                <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                            </a>
+                        </li>
+
+                        <li class="redes">
+                            <a href="https://www.facebook.com/" target="_blank">
+                                <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                            </a>
+                        </li>
+
+                        <li class="redes">
+                            <a href="https://www.tiktok.com/" target="_blank">
+                                <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div id="contactos-redes2">
+                <h3 id="contacto">Contacto</h3>
+
+                <nav class="redes nav-redes contacto-footer">
+                    <ul>
+                        <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                        <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                        <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </footer>
+
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="carrito-global.js"></script>
+    <script src="mercado-pago.js"></script>
+</body>
+</html>

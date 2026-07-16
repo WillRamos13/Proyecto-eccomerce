@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión | FastMarket</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+</head>
+<body class="auth-body">
+    <main class="auth-page">
+        <section class="auth-card auth-card-login">
+            <a href="index.html" class="auth-logo" aria-label="Ir al inicio">
+                <img src="img/logo.png" alt="FastMarket">
+            </a>
+
+            <div class="auth-heading">
+                <h1>Iniciar sesión</h1>
+                <p>Ingresa con tu correo y contraseña para acceder a tu cuenta.</p>
+            </div>
+
+            <form id="form-login" class="auth-form">
+                <div class="campo">
+                    <label for="login-correo">Correo electrónico</label>
+                    <input type="email" id="login-correo" placeholder="tu correo@gmail.com" autocomplete="email">
+                </div>
+
+                <div class="campo">
+                    <label for="login-password">Contraseña</label>
+                    <div class="input-group password-box">
+                        <input type="password" id="login-password" placeholder="Ingresa tu contraseña" autocomplete="current-password">
+                        <button type="button" class="toggle-password" data-target="login-password" aria-label="Mostrar contraseña">Mostrar</button>
+                    </div>
+                </div>
+
+                <div class="login-actions">
+                    <label class="mini-check">
+                        <input type="checkbox" id="recordar-sesion">
+                        <span>Recordarme</span>
+                    </label>
+                    <a href="recuperar-contrasena.html">Olvidé mi contraseña</a>
+                </div>
+
+                <p id="mensaje-login" class="mensaje-form"></p>
+
+                <button type="submit" class="btn-auth">Entrar</button>
+            </form>
+
+            <div class="auth-links">
+                <span>¿No tienes cuenta?</span>
+                <a href="registro.html">Crear cuenta</a>
+            </div>
+
+            <a href="index.html" class="volver-inicio">Volver al inicio</a>
+        </section>
+    </main>
+
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

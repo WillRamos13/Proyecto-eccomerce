@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil | FastMarket</title>
+    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+    <link rel="stylesheet" href="carrito-global.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="cabeza">
+            <a href="index.html">
+                <img class="barra" src="img/logo.png" id="logo" alt="Logo FastMarket">
+            </a>
+
+            <nav class="barra" id="nav-menu">
+                <ul>
+                    <li class="barra"><a href="index.html">Inicio</a></li>
+                    <li class="barra"><a href="productos.html">Productos</a></li>
+                    <li class="barra"><a href="nosotros.html">Nosotros</a></li>
+                    <li class="barra"><a href="#pie-de-pagina">Contacto</a></li>
+
+                    <li class="barra" id="busqueda">
+                        <img src="img/lupa.png" alt="Buscar" class="icono-menu">
+                        <input type="text" placeholder="Buscar..." id="buscador">
+                    </li>
+
+                    <li class="barra" id="carrito">
+                        <a href="productos.html">
+                            <img class="icono-menu" src="img/carrito.png" alt="Carrito">
+                        </a>
+                    </li>
+
+                    <li class="barra" id="cliente-area">
+                        <a href="login.html" id="login-btn">Iniciar sesión</a>
+
+                        <div id="cliente-menu" class="oculto">
+                            <button id="btn-cliente">
+                                👤 <span id="nombre-cliente">Cliente</span> ▾
+                            </button>
+
+                            <div id="opciones-cliente">
+                                <a href="pedidos.html">Mis pedidos</a>
+                                <a href="#direcciones">Direcciones</a>
+                                <a href="#seguridad">Seguridad</a>
+                                <a href="#reclamos">Mis reclamos</a>
+                                <button id="cerrar-sesion-cliente">Cerrar sesión</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="perfil-main">
+
+        <section id="perfil-hero">
+            <div>
+                <p class="subtitulo">Área del cliente</p>
+                <h1>Mi perfil</h1>
+                <p>
+                    Administra tus datos personales, direcciones de entrega,
+                    seguridad de cuenta y revisa accesos rápidos a tus pedidos.
+                </p>
+            </div>
+        </section>
+
+        <section id="perfil-resumen">
+
+            <article>
+                <h3>Cliente</h3>
+                <strong id="resumen-nombre">---</strong>
+                <p>Nombre registrado</p>
+            </article>
+
+            <article>
+                <h3>Correo</h3>
+                <strong id="resumen-correo">---</strong>
+                <p>Correo principal</p>
+            </article>
+
+            <article>
+                <h3>Direcciones</h3>
+                <strong id="resumen-direcciones">0</strong>
+                <p>Direcciones guardadas</p>
+            </article>
+
+            <article>
+                <h3>Pedidos</h3>
+                <strong id="resumen-pedidos">0</strong>
+                <p>Pedidos registrados</p>
+            </article>
+
+        </section>
+
+        <section id="zona-perfil">
+
+            <div id="perfil-layout">
+
+                <aside id="perfil-menu-lateral">
+                    <h2>Mi cuenta</h2>
+
+                    <a href="#datos-personales">Datos personales</a>
+                    <a href="#direcciones">Direcciones</a>
+                    <a href="#seguridad">Seguridad</a>
+                    <a href="pedidos.html">Mis pedidos</a>
+                    <a href="#reclamos">Mis reclamos</a>
+                    <button id="btn-cerrar-lateral">Cerrar sesión</button>
+                </aside>
+
+                <section id="perfil-contenido">
+
+                    <div id="mensaje-sin-sesion" class="oculto">
+                        <h2>No has iniciado sesión</h2>
+                        <p>Para ver tu perfil, primero debes iniciar sesión o crear una cuenta.</p>
+                        <a href="login.html">Ir a iniciar sesión</a>
+                    </div>
+
+                    <section id="datos-personales" class="perfil-card">
+                        <div class="titulo-card">
+                            <h2>Datos personales</h2>
+                            <p>Actualiza tu nombre, correo y teléfono.</p>
+                        </div>
+
+                        <form id="form-perfil">
+                            <label for="perfil-nombre">Nombre completo</label>
+                            <input type="text" id="perfil-nombre" placeholder="Ej: Juan Pérez">
+
+                            <label for="perfil-correo">Correo</label>
+                            <input type="email" id="perfil-correo" placeholder="cliente@gmail.com">
+
+                            <label for="perfil-telefono">Teléfono</label>
+                            <input type="text" id="perfil-telefono" placeholder="999999999">
+
+                            <button type="submit">Guardar cambios</button>
+
+                            <p id="mensaje-perfil" class="mensaje"></p>
+                        </form>
+                    </section>
+
+                    <section id="direcciones" class="perfil-card">
+                        <div class="titulo-card">
+                            <h2>Direcciones de entrega</h2>
+                            <p>Agrega, revisa o elimina tus direcciones guardadas.</p>
+                        </div>
+
+                        <form id="form-direccion">
+                            <label for="nueva-direccion">Nueva dirección</label>
+                            <input type="text" id="nueva-direccion" placeholder="Ej: Av. Principal 123, Ica">
+
+                            <button type="submit">Agregar dirección</button>
+
+                            <p id="mensaje-direccion" class="mensaje"></p>
+                        </form>
+
+                        <div id="lista-direcciones"></div>
+                    </section>
+
+                    <section id="seguridad" class="perfil-card">
+                        <div class="titulo-card">
+                            <h2>Seguridad</h2>
+                            <p>Cambia tu contraseña de acceso.</p>
+                        </div>
+
+                        <form id="form-password">
+                            <label for="password-actual">Contraseña actual</label>
+                            <input type="password" id="password-actual" placeholder="Contraseña actual">
+
+                            <label for="password-nueva">Nueva contraseña</label>
+                            <input type="password" id="password-nueva" placeholder="Nueva contraseña">
+
+                            <label for="password-confirmar">Confirmar contraseña</label>
+                            <input type="password" id="password-confirmar" placeholder="Repite la nueva contraseña">
+
+                            <button type="submit">Cambiar contraseña</button>
+
+                            <p id="mensaje-password" class="mensaje"></p>
+                        </form>
+                    </section>
+
+                    <section id="acceso-pedidos" class="perfil-card">
+                        <div class="titulo-card">
+                            <h2>Mis pedidos</h2>
+                            <p>Revisa el seguimiento, estado y mapa de tus pedidos.</p>
+                        </div>
+
+                        <div class="pedido-acceso">
+                            <div>
+                                <h3>Seguimiento de pedidos</h3>
+                                <p>
+                                    Consulta si tu pedido está pendiente, en camino, en reparto
+                                    o entregado.
+                                </p>
+                            </div>
+
+                            <a href="pedidos.html">Ver mis pedidos</a>
+                        </div>
+                    </section>
+
+                    <section id="reclamos" class="perfil-card">
+                        <div class="titulo-card">
+                            <h2>Reclamos y atención</h2>
+                            <p>Registra una incidencia y revisa la respuesta del equipo de FastMarket.</p>
+                        </div>
+
+                        <form id="form-reclamo" class="form-reclamo-cliente">
+                            <div class="reclamo-form-grid">
+                                <div>
+                                    <label for="reclamo-pedido">Pedido relacionado <span>(opcional)</span></label>
+                                    <select id="reclamo-pedido"><option value="">Sin pedido asociado</option></select>
+                                </div>
+                                <div>
+                                    <label for="reclamo-tipo">Tipo de reclamo</label>
+                                    <select id="reclamo-tipo">
+                                        <option value="PRODUCTO">Producto</option>
+                                        <option value="ENTREGA">Entrega</option>
+                                        <option value="PAGO">Pago</option>
+                                        <option value="DEVOLUCION">Devolución</option>
+                                        <option value="ATENCION">Atención</option>
+                                        <option value="OTRO">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <label for="reclamo-asunto">Asunto</label>
+                            <input type="text" id="reclamo-asunto" maxlength="160" placeholder="Resume brevemente el problema">
+
+                            <label for="reclamo-descripcion">Descripción</label>
+                            <textarea id="reclamo-descripcion" maxlength="4000" placeholder="Describe qué ocurrió y qué solución esperas"></textarea>
+
+                            <button type="submit">Registrar reclamo</button>
+                            <p id="mensaje-reclamo" class="mensaje"></p>
+                        </form>
+
+                        <div id="lista-reclamos" class="lista-reclamos-cliente"></div>
+                    </section>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="chat-soporte">
+        <spline-viewer
+            class="robot-3d"
+            url="https://prod.spline.design/TeR6aLB5yvJrR1j8/scene.splinecode">
+        </spline-viewer>
+    </div>
+
+    <div id="chat-box">
+        <div id="chat-header">
+            <span>Chat rápido</span>
+            <button id="cerrar-chat">×</button>
+        </div>
+
+        <div id="chat-mensajes">
+            <div class="mensaje-chat bot">Hola 👋 Soy el asistente de FastMarket. Puedo ayudarte con productos, promociones, compras, pedidos, envíos, pagos, reclamos y tu cuenta.</div>
+        </div>
+
+        <div id="chat-input">
+            <input type="text" id="mensaje" maxlength="1000" placeholder="Escribe tu consulta">
+            <button id="enviar">Enviar</button>
+        </div>
+    </div>
+
+                <footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.88/build/spline-viewer.js"></script>
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="carrito-global.js"></script>
+    <script src="perfil.js"></script>
+</body>
+</html>

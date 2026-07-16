@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | FastMarket</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+</head>
+<body class="auth-body">
+    <main class="auth-page">
+        <section class="auth-card auth-card-registro">
+            <a href="index.html" class="auth-logo" aria-label="Ir al inicio">
+                <img src="img/logo.png" alt="FastMarket">
+            </a>
+
+            <div class="auth-heading">
+                <h1>Crear cuenta</h1>
+                <p>Completa tus datos y verifica tu correo para registrarte.</p>
+            </div>
+
+            <form id="form-registro" class="auth-form">
+                <div class="form-grid two-cols">
+                    <div class="campo">
+                        <label for="registro-nombre">Nombre</label>
+                        <input type="text" id="registro-nombre" placeholder="Ej. Mario" autocomplete="given-name">
+                    </div>
+
+                    <div class="campo">
+                        <label for="registro-apellidos">Apellidos</label>
+                        <input type="text" id="registro-apellidos" placeholder="Ej. Ramos" autocomplete="family-name">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="registro-correo">Correo electrónico</label>
+                    <input type="email" id="registro-correo" placeholder="tu correo@gmail.com" autocomplete="email">
+                </div>
+
+                <div class="form-grid two-cols">
+                    <div class="campo">
+                        <label for="registro-documento">Documento</label>
+                        <div class="input-group documento-box">
+                            <select id="registro-tipo-documento" aria-label="Tipo de documento">
+                                <option value="DNI">DNI</option>
+                                <option value="CE">CE</option>
+                                <option value="PASAPORTE">Pasaporte</option>
+                            </select>
+                            <input type="text" id="registro-documento" placeholder="Número">
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="registro-celular">Celular</label>
+                        <div class="input-group telefono-box">
+                            <span>+51</span>
+                            <input type="tel" id="registro-celular" placeholder="999 999 999" autocomplete="tel">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="registro-password">Contraseña</label>
+                    <div class="input-group password-box">
+                        <input type="password" id="registro-password" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+                        <button type="button" class="toggle-password" data-target="registro-password" aria-label="Mostrar contraseña">Mostrar</button>
+                    </div>
+                </div>
+
+                <div class="password-rules" aria-label="Reglas de contraseña">
+                    <span id="rule-length">Mín. 8 caracteres</span>
+                    <span id="rule-upper">1 mayúscula</span>
+                    <span id="rule-lower">1 minúscula</span>
+                    <span id="rule-number">1 número</span>
+                    <span id="rule-space">Sin espacios</span>
+                    <span id="rule-special">Sin símbolos no permitidos</span>
+                </div>
+
+                <div id="codigo-panel" class="codigo-panel oculto">
+                    <p>Te enviaremos un código de 6 dígitos al correo indicado.</p>
+
+                    <div class="campo codigo-campo">
+                        <label for="codigo-verificacion">Código de verificación</label>
+                        <input type="text" id="codigo-verificacion" maxlength="6" placeholder="000000" inputmode="numeric" autocomplete="one-time-code">
+                    </div>
+
+                    <button type="button" id="reenviar-codigo" class="btn-link">Reenviar código</button>
+                </div>
+
+                <p id="mensaje-registro" class="mensaje-form"></p>
+
+                <button type="submit" id="btn-registro" class="btn-auth" disabled>Enviar código</button>
+            </form>
+
+            <div class="auth-links">
+                <span>¿Ya tienes cuenta?</span>
+                <a href="login.html">Iniciar sesión</a>
+            </div>
+
+            <a href="index.html" class="volver-inicio">Volver al inicio</a>
+        </section>
+    </main>
+
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="registro.js"></script>
+</body>
+</html>

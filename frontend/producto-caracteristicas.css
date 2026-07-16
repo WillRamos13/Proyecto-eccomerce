@@ -1,0 +1,110 @@
+.editor-caracteristicas {
+    margin-top: 16px;
+    padding: 16px;
+    border: 1px solid rgba(253, 100, 3, .22);
+    border-radius: 16px;
+    background: #fffaf6;
+}
+
+.editor-caracteristicas .check-caracteristicas {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.editor-caracteristicas .check-caracteristicas input {
+    width: 18px;
+    min-height: 18px;
+    margin: 0;
+    accent-color: #fd6403;
+}
+
+.panel-caracteristicas {
+    margin-top: 14px;
+}
+
+.sugerencias-caracteristicas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.chip-caracteristica {
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid rgba(253, 100, 3, .35);
+    border-radius: 999px;
+    background: #fff;
+    color: #a64000;
+    font-size: .82rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.chip-caracteristica:hover {
+    background: #fff0e5;
+}
+
+.sin-sugerencias {
+    color: #6b7280;
+    font-size: .86rem;
+    line-height: 1.5;
+}
+
+.lista-caracteristicas {
+    display: grid;
+    gap: 10px;
+}
+
+.fila-caracteristica {
+    display: grid;
+    grid-template-columns: minmax(110px, .8fr) minmax(150px, 1.2fr) 40px;
+    gap: 8px;
+    align-items: center;
+}
+
+.fila-caracteristica input {
+    margin: 0;
+}
+
+.quitar-caracteristica {
+    width: 40px;
+    min-height: 42px;
+    padding: 0;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    background: #fff;
+    color: #b91c1c;
+    font-size: 1.35rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.btn-agregar-caracteristica {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px 12px;
+    border: 1px dashed rgba(253, 100, 3, .55);
+    border-radius: 12px;
+    background: #fff;
+    color: #a64000;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.oculto {
+    display: none !important;
+}
+
+@media (max-width: 560px) {
+    .fila-caracteristica {
+        grid-template-columns: 1fr 40px;
+    }
+
+    .fila-caracteristica [data-caracteristica-nombre] {
+        grid-column: 1 / -1;
+    }
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis pedidos | FastMarket</title>
+    <link rel="stylesheet" href="pedidos.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+    <link rel="stylesheet" href="carrito-global.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="cabeza">
+            <a href="index.html">
+                <img class="barra" src="img/logo.png" id="logo" alt="Logo FastMarket">
+            </a>
+
+            <nav class="barra" id="nav-menu">
+                <ul>
+                    <li class="barra"><a href="index.html">Inicio</a></li>
+                    <li class="barra"><a href="productos.html">Productos</a></li>
+                    <li class="barra"><a href="nosotros.html">Nosotros</a></li>
+                    <li class="barra"><a href="#pie-de-pagina">Contacto</a></li>
+
+                    <li class="barra" id="busqueda">
+                        <img src="img/lupa.png" alt="Buscar" class="icono-menu">
+                        <input type="text" placeholder="Buscar..." id="buscador">
+                    </li>
+
+                    <li class="barra" id="carrito">
+                        <a href="productos.html">
+                            <img class="icono-menu" src="img/carrito.png" alt="Carrito">
+                        </a>
+                    </li>
+
+                    <li class="barra" id="cliente-area">
+                        <a href="login.html" id="login-btn">Iniciar sesión</a>
+
+                        <div id="cliente-menu" class="oculto">
+                            <button id="btn-cliente">
+                                👤 <span id="nombre-cliente">Cliente</span> ▾
+                            </button>
+
+                            <div id="opciones-cliente">
+                                <a href="perfil.html">Mi perfil</a>
+                                <button data-cliente-panel="direcciones">Direcciones</button>
+                                <button data-cliente-panel="seguridad">Seguridad</button>
+                                <button id="cerrar-sesion-cliente">Cerrar sesión</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="overlay-cliente"></div>
+
+    <aside id="panel-cliente">
+        <div id="cliente-panel-header">
+            <h2 id="titulo-panel-cliente">Mi perfil</h2>
+            <button id="cerrar-panel-cliente">×</button>
+        </div>
+
+        <div id="contenido-panel-cliente"></div>
+    </aside>
+
+    <main id="pedidos-main">
+
+        <section id="pedidos-hero">
+            <div>
+                <p class="subtitulo">Área del cliente</p>
+                <h1>Mis pedidos</h1>
+                <p>
+                    Revisa el estado de tus compras, el avance de entrega,
+                    la dirección registrada y el seguimiento en el mapa.
+                </p>
+            </div>
+        </section>
+
+        <section id="resumen-pedidos">
+            <article>
+                <h3>Total pedidos</h3>
+                <strong id="total-pedidos">0</strong>
+                <p>Pedidos registrados</p>
+            </article>
+
+            <article>
+                <h3>Pendientes</h3>
+                <strong id="pedidos-pendientes">0</strong>
+                <p>En preparación</p>
+            </article>
+
+            <article>
+                <h3>En camino</h3>
+                <strong id="pedidos-camino">0</strong>
+                <p>Rumbo a entrega</p>
+            </article>
+
+            <article>
+                <h3>Entregados</h3>
+                <strong id="pedidos-entregados">0</strong>
+                <p>Finalizados</p>
+            </article>
+        </section>
+
+        <section id="zona-pedidos">
+
+            <aside id="lista-pedidos">
+                <h2>Pedidos recientes</h2>
+                <div id="contenedor-pedidos"></div>
+            </aside>
+
+            <section id="detalle-pedido">
+                <div id="detalle-vacio">
+                    <h2>Selecciona un pedido</h2>
+                    <p>Haz clic en un pedido para ver su detalle, seguimiento y mapa.</p>
+                </div>
+
+                <div id="detalle-contenido" class="oculto">
+
+                    <div id="detalle-header">
+                        <div>
+                            <h2 id="detalle-codigo">Pedido</h2>
+                            <p id="detalle-fecha"></p>
+                        </div>
+
+                        <span id="detalle-estado"></span>
+                    </div>
+
+                    <div class="detalle-grid">
+                        <article class="detalle-card">
+                            <h3>Información del pedido</h3>
+                            <p><strong>Cliente:</strong> <span id="detalle-cliente"></span></p>
+                            <p><strong>Total:</strong> <span id="detalle-total"></span></p>
+                            <p><strong>Método:</strong> <span id="detalle-metodo"></span></p>
+                            <p><strong>Estado del pago:</strong> <span id="detalle-pago"></span></p>
+                            <p><strong>Entrega estimada:</strong> <span id="detalle-estimada"></span></p>
+                            <div id="acciones-pago-pedido" class="acciones-pago-pedido oculto">
+                                <button type="button" id="btn-reintentar-pago">Reintentar pago</button>
+                                <button type="button" id="btn-cancelar-reserva">Cancelar reserva</button>
+                            </div>
+                        </article>
+
+                        <article class="detalle-card">
+                            <h3>Dirección de entrega</h3>
+                            <p id="detalle-direccion"></p>
+                        </article>
+                    </div>
+
+                    <div id="seguimiento">
+                        <h3>Seguimiento del pedido</h3>
+
+                        <div class="linea-tiempo">
+                            <div class="paso-seguimiento" data-paso="preparacion">
+                                <span>1</span>
+                                <h4>Preparación</h4>
+                                <p>Pedido recibido</p>
+                            </div>
+
+                            <div class="paso-seguimiento" data-paso="camino">
+                                <span>2</span>
+                                <h4>En camino</h4>
+                                <p>Pedido enviado</p>
+                            </div>
+
+                            <div class="paso-seguimiento" data-paso="reparto">
+                                <span>3</span>
+                                <h4>En reparto</h4>
+                                <p>Cerca a tu dirección</p>
+                            </div>
+
+                            <div class="paso-seguimiento" data-paso="entregado">
+                                <span>4</span>
+                                <h4>Entregado</h4>
+                                <p>Pedido finalizado</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="mapa-contenedor">
+                        <h3>Mapa de seguimiento</h3>
+                        <iframe id="mapa-pedido" src="" loading="lazy"></iframe>
+                    </div>
+
+                    <div id="productos-pedido">
+                        <h3>Productos del pedido</h3>
+                        <div id="detalle-productos"></div>
+                    </div>
+
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+                <footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="carrito-global.js"></script>
+    <script src="pedidos.js"></script>
+</body>
+</html>

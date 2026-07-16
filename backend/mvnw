@@ -1,0 +1,50 @@
+#!/bin/sh
+set -eu
+
+BASE_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+MAVEN_VERSION=3.9.9
+DIST_NAME="apache-maven-${MAVEN_VERSION}"
+CACHE_BASE="${MAVEN_USER_HOME:-$HOME/.m2}/wrapper/dists/fastmarket-${MAVEN_VERSION}"
+MAVEN_HOME="$CACHE_BASE/$DIST_NAME"
+DIST_URL="https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/${MAVEN_VERSION}/${DIST_NAME}-bin.zip"
+ZIP_FILE="$CACHE_BASE/${DIST_NAME}-bin.zip"
+
+if command -v mvn >/dev/null 2>&1; then
+  exec mvn "$@"
+fi
+
+if [ ! -x "$MAVEN_HOME/bin/mvn" ]; then
+  mkdir -p "$CACHE_BASE"
+  if [ ! -f "$ZIP_FILE" ]; then
+    echo "Descargando Maven ${MAVEN_VERSION}..." >&2
+    if command -v curl >/dev/null 2>&1; then
+      curl -fsSL "$DIST_URL" -o "$ZIP_FILE"
+    elif command -v wget >/dev/null 2>&1; then
+      wget -q "$DIST_URL" -O "$ZIP_FILE"
+    elif command -v python3 >/dev/null 2>&1; then
+      python3 - "$DIST_URL" "$ZIP_FILE" <<'PY'
+import sys, urllib.request
+urllib.request.urlretrieve(sys.argv[1], sys.argv[2])
+PY
+    else
+      echo "No se encontró curl, wget ni python3 para descargar Maven." >&2
+      exit 1
+    fi
+  fi
+  rm -rf "$MAVEN_HOME"
+  if command -v unzip >/dev/null 2>&1; then
+    unzip -q "$ZIP_FILE" -d "$CACHE_BASE"
+  elif command -v python3 >/dev/null 2>&1; then
+    python3 - "$ZIP_FILE" "$CACHE_BASE" <<'PY'
+import sys, zipfile
+with zipfile.ZipFile(sys.argv[1]) as z:
+    z.extractall(sys.argv[2])
+PY
+  else
+    echo "No se encontró unzip ni python3 para extraer Maven." >&2
+    exit 1
+  fi
+fi
+
+cd "$BASE_DIR"
+exec "$MAVEN_HOME/bin/mvn" "$@"

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | FastMarket</title>
+    <link rel="stylesheet" href="productos.css">
+    <link rel="stylesheet" href="estilos-globales.css">
+    <link rel="stylesheet" href="carrito-global.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="cabeza">
+            <a href="index.html">
+                <img class="barra" src="img/logo.png" id="logo" alt="Logo FastMarket">
+            </a>
+
+            <nav class="barra" id="nav-menu">
+                <ul>
+                    <li class="barra"><a href="index.html">Inicio</a></li>
+                    <li class="barra"><a href="productos.html">Productos</a></li>
+                    <li class="barra"><a href="nosotros.html">Nosotros</a></li>
+                    <li class="barra"><a href="#pie-de-pagina">Contacto</a></li>
+
+                    <li class="barra" id="busqueda">
+                        <img src="img/lupa.png" alt="Buscar" class="icono-menu">
+                        <input type="text" placeholder="Buscar..." id="buscador-header">
+                    </li>
+
+                    <li class="barra" id="carrito">
+                        <img class="icono-menu" src="img/carrito.png" alt="Carrito">
+                        <span id="contador-carrito">0</span>
+                    </li>
+
+                    <li class="barra" id="cliente-area">
+
+                        <a href="login.html" id="login-btn">Iniciar sesión</a>
+
+                        <div id="cliente-menu" class="oculto">
+                            <button id="btn-cliente">
+                                👤 <span id="nombre-cliente">Cliente</span> ▾
+                            </button>
+
+                            <div id="opciones-cliente">
+                                <a href="perfil.html">Mi perfil</a>
+                                <a href="pedidos.html">Mis pedidos</a>
+                                <button data-cliente-panel="direcciones">Direcciones</button>
+                                <button data-cliente-panel="seguridad">Seguridad</button>
+                                <button id="cerrar-sesion-cliente">Cerrar sesión</button>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="cuerpo-productos">
+
+        <section id="ofertas-slider">
+            <div class="slider">
+                <div class="slider-contenedor" id="slider-contenedor">
+                                    </div>
+
+                <button class="slider-btn" id="anterior">‹</button>
+                <button class="slider-btn" id="siguiente">›</button>
+
+                <div class="puntos" id="puntos"></div>
+            </div>
+        </section>
+
+        <section class="escaparate-productos escaparate-compacto" id="bloque-promociones">
+            <div class="seccion-top seccion-top-simple">
+                <div>
+                    <h2>No te lo puedes perder</h2>
+                </div>
+            </div>
+
+            <div class="carrusel-shell">
+                <button class="carrusel-flecha carrusel-flecha-izquierda" type="button" data-scroll-target="promociones-carrusel" data-scroll="-1" aria-label="Ver promociones anteriores">‹</button>
+                <div class="carrusel-lineal promociones-carrusel" id="promociones-carrusel"></div>
+                <button class="carrusel-flecha carrusel-flecha-derecha" type="button" data-scroll-target="promociones-carrusel" data-scroll="1" aria-label="Ver más promociones">›</button>
+            </div>
+        </section>
+
+        <section class="escaparate-productos escaparate-compacto" id="bloque-categorias-destacadas">
+            <div class="seccion-top seccion-top-simple">
+                <div>
+                    <h2>Categorías</h2>
+                </div>
+            </div>
+
+            <div class="carrusel-shell">
+                <button class="carrusel-flecha carrusel-flecha-izquierda" type="button" data-scroll-target="categorias-carrusel" data-scroll="-1" aria-label="Ver categorías anteriores">‹</button>
+                <div class="carrusel-lineal categorias-carrusel" id="categorias-carrusel"></div>
+                <button class="carrusel-flecha carrusel-flecha-derecha" type="button" data-scroll-target="categorias-carrusel" data-scroll="1" aria-label="Ver más categorías">›</button>
+            </div>
+        </section>
+
+        <section class="escaparate-productos" id="bloque-destacados">
+            <div class="seccion-top">
+                <div>
+                    <span class="seccion-etiqueta">Destacados</span>
+                    <h2>Productos destacados</h2>
+                    <p>Productos seleccionados para comprar rápido.</p>
+                </div>
+                <div class="controles-carrusel">
+                    <button type="button" data-scroll-target="destacados-carrusel" data-scroll="-1">‹</button>
+                    <button type="button" data-scroll-target="destacados-carrusel" data-scroll="1">›</button>
+                </div>
+            </div>
+            <div class="carrusel-lineal productos-linea" id="destacados-carrusel"></div>
+        </section>
+
+        <section class="escaparate-productos filas-categorias" id="filas-categorias"></section>
+
+        <section id="productos-section">
+
+            <div class="titulo-productos">
+                <h2>Productos</h2>
+                <p>Busca productos por nombre o filtra por categoría.</p>
+            </div>
+
+            <div class="barra-productos">
+                <input type="text" id="buscar-producto" placeholder="Buscar producto...">
+
+                <select id="ordenar-producto">
+                    <option value="normal">Ordenar</option>
+                    <option value="precio-menor">Menor precio</option>
+                    <option value="precio-mayor">Mayor precio</option>
+                </select>
+            </div>
+
+            <div class="categorias" id="categorias-filtros">
+                <button class="categoria-btn activo" data-categoria="todos">Todos</button>
+                <button class="categoria-btn" data-categoria="moda">Moda</button>
+                <button class="categoria-btn" data-categoria="tecnologia">Tecnología</button>
+                <button class="categoria-btn" data-categoria="hogar">Hogar</button>
+                <button class="categoria-btn" data-categoria="estudio">Estudio</button>
+                <button class="categoria-btn" data-categoria="belleza">Belleza</button>
+                <button class="categoria-btn" data-categoria="deportes">Deportes</button>
+                <button class="categoria-btn" data-categoria="juguetes">Juguetes</button>
+            </div>
+
+            <div id="productos-contenedor" class="productos-contenedor"></div>
+
+            <div id="mensaje-vacio">
+                <h3>No se encontraron productos</h3>
+                <p>Intenta con otra búsqueda o categoría.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="overlay-carrito"></div>
+
+    <aside id="panel-carrito">
+        <div id="carrito-header">
+            <div>
+                <h2>Mi carrito</h2>
+                <p id="carrito-subtitulo">Productos agregados</p>
+            </div>
+
+            <button id="cerrar-carrito">×</button>
+        </div>
+
+        <div id="carrito-lista">
+            <p class="carrito-vacio">Tu carrito está vacío.</p>
+        </div>
+
+        <div class="cupon-carrito-box">
+            <label for="cupon-carrito">Cupón</label>
+            <div class="cupon-carrito-input">
+                <input type="text" id="cupon-carrito" placeholder="Código de cupón">
+                <button type="button" id="aplicar-cupon-carrito">Aplicar</button>
+            </div>
+            <p id="mensaje-cupon-carrito"></p>
+        </div>
+
+        <div id="carrito-total">
+            <div>
+                <span>Subtotal:</span>
+                <strong id="subtotal-carrito">S/ 0.00</strong>
+            </div>
+            <div id="fila-descuento-carrito" class="oculto">
+                <span>Descuento:</span>
+                <strong id="descuento-carrito">- S/ 0.00</strong>
+            </div>
+            <div>
+                <span>Total:</span>
+                <strong id="total-carrito">S/ 0.00</strong>
+            </div>
+
+            <button id="finalizar-compra">Finalizar compra</button>
+            <button id="vaciar-carrito">Vaciar carrito</button>
+        </div>
+    </aside>
+
+    <div id="overlay-cliente"></div>
+
+    <aside id="panel-cliente">
+        <div id="cliente-panel-header">
+            <h2 id="titulo-panel-cliente">Mi perfil</h2>
+            <button id="cerrar-panel-cliente">×</button>
+        </div>
+
+        <div id="contenido-panel-cliente"></div>
+    </aside>
+
+    <div id="chat-soporte">
+        <spline-viewer
+            class="robot-3d"
+            url="https://prod.spline.design/TeR6aLB5yvJrR1j8/scene.splinecode">
+        </spline-viewer>
+    </div>
+
+    <div id="chat-box">
+        <div id="chat-header">
+            <span>Chat rápido</span>
+            <button id="cerrar-chat">×</button>
+        </div>
+
+        <div id="chat-mensajes">
+            <div class="mensaje bot">Hola 👋 Soy el asistente de FastMarket. Puedo ayudarte con productos, promociones, compras, pedidos, envíos, pagos, reclamos y tu cuenta.</div>
+        </div>
+
+        <div id="chat-input">
+            <input type="text" id="mensaje" maxlength="1000" placeholder="Escribe tu consulta">
+            <button id="enviar">Enviar</button>
+        </div>
+    </div>
+
+                <footer id="pie-de-pagina">
+            <div id="contactos-redes">
+
+                <div id="contactos-redes1">
+                    <h3 id="redes">Síguenos en</h3>
+
+                    <nav class="redes nav-redes">
+                        <ul>
+                            <li class="redes">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <img class="logo-redes" src="img/instagram.png" alt="Instagram"> Instagram
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                                    <img class="logo-redes" src="img/facebook.png" alt="Facebook"> Facebook
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <img class="logo-redes" src="img/whatsapp.png" alt="WhatsApp"> WhatsApp
+                                </a>
+                            </li>
+
+                            <li class="redes">
+                                <a href="https://www.tiktok.com/es-419/" target="_blank">
+                                    <img class="logo-redes" src="img/tiktok.png" alt="TikTok"> TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="contactos-redes2">
+                    <h3 class="footer-titulo">Contacto</h3>
+
+                    <nav class="redes nav-redes contacto-footer">
+                        <ul>
+                            <li class="redes"><a href="https://www2.claro.com.pe/institucional/centro-de-prensa/ampliacion-sms/">📞 999999999</a></li>
+                            <li class="redes"><a href="https://mail.google.com/mail/u/0/#inbox">✉️ soporte@fastmarket.com</a></li>
+                            <li class="redes"><a href="https://maps.app.goo.gl/H98FeKnEgCrhqcXd9">📍 Ica, Perú</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </footer>
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.88/build/spline-viewer.js"></script>
+    <div id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="carrito-global.js"></script>
+    <script src="productos.js"></script>
+
+</body>
+</html>
